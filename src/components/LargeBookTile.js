@@ -12,7 +12,7 @@ const StyledLargeBookTile = styled.div`
   justify-content: space-between;
   img {
     max-width: 150px;
-    
+    max-height: auto;
   }
 `;
 
