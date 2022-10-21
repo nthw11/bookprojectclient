@@ -1,7 +1,8 @@
-import React from 'react'
-import Header from './Header'
+import React, { useState } from 'react'
+import Header from '../Pages/Header'
 import styled from 'styled-components'
 import SearchResultsBookTile from './SearchResultsBookTile'
+import BookDetailModal from './BookDetailModal'
 
 const StyledModal = styled.div`
     .overlay{
@@ -11,7 +12,7 @@ const StyledModal = styled.div`
       justify-content: space-between;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 90%;
       height: 100%;
       color: #FFF;  
       z-Index: 1000;
@@ -24,19 +25,23 @@ const StyledModal = styled.div`
       right: 10px;
     }
     .modalContainer{
-      background-color: #fff;
+      background-color: #fdd;
       position: absolute;
-      width: 80vw;
+      width: 70vw;
       height: auto ;
-      top: 30vh;
-      left: 10vw;
+      top: 5vh;
+      left: 15vw;
     }
 `
 
+
 const SearchResultsModal = ({open, onClose, books}) => {
+
   if(!open) return null
   console.log(books)
+  
   return (
+    <>
     <StyledModal className='overlay' onClick={onClose}>
       <div onClick={(e)=> {
         e.stopPropagation()
@@ -47,7 +52,7 @@ const SearchResultsModal = ({open, onClose, books}) => {
           <div className="content">
             {books.map(book => {
               return (
-              <SearchResultsBookTile book={book} />
+              <SearchResultsBookTile book={book} onClick={onClose} />
               )
               
             })
@@ -59,6 +64,8 @@ const SearchResultsModal = ({open, onClose, books}) => {
       
       </div>
     </StyledModal>
+
+    </>
   )
 }
 

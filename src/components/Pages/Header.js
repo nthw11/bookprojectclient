@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
-import SearchBar from './SearchBar';
+import SearchBar from '../Blocks/SearchBar';
 
 const NavLink = styled(Link)`
   text-decoration: none;

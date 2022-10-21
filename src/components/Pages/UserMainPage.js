@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import Header from './Header'
-import LargeBookTile from './LargeBookTile'
+import LargeBookTile from '../Blocks/LargeBookTile'
 
 
-import dummyBookData from '../dummyData.js'
-import BookshelfContainer from './BookshelfContainer'
+import dummyBookData from '../../dummyData.js'
+import BookshelfContainer from '../Blocks/BookshelfContainer'
 
 const UserMainPageWrapper = styled.div`
   display: flex;
