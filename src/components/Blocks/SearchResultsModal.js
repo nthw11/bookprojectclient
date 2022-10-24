@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Header from '../Pages/Header'
 import styled from 'styled-components'
 import SearchResultsBookTile from './SearchResultsBookTile'
 import BookDetailModal from './BookDetailModal'
+import SearchContext from '../../contexts/searchContext'
 
 const StyledModal = styled.div`
     .overlay{
@@ -41,7 +42,7 @@ const SearchResultsModal = ({open, onClose, books}) => {
   console.log(books)
   
   return (
-    <>
+    // <SearchContext.Consumer>
     <StyledModal className='overlay' onClick={onClose}>
       <div onClick={(e)=> {
         e.stopPropagation()
@@ -65,7 +66,7 @@ const SearchResultsModal = ({open, onClose, books}) => {
       </div>
     </StyledModal>
 
-    </>
+    // </SearchContext.Consumer>
   )
 }
 

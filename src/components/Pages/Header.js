@@ -26,8 +26,11 @@ const Header = () => {
         <li>
           <NavLink to={'/home'}>User Home</NavLink>
         </li>
+        <li>
+          <NavLink to={'/search'}>Find A New Book</NavLink>
+        </li>
       </ul>
-      <SearchBar />
+      {/* <SearchBar /> */}
       {/* <hr /> */}
     </StyledNav>
   )

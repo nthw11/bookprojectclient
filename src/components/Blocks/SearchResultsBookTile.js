@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import styled from 'styled-components'
-import BookDetailModal from './BookDetailModal';
+
 
 const StyledSearchResultsBookTile = styled.div`
 border: 1px solid black;
@@ -48,15 +48,16 @@ const SearchResultsBookTile = ({book}) => {
         <h4>{book.volumeInfo.authors}</h4>
       </div>
       <div className="imgInfo">
-        <img className='bookThumbnail' src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+        <img className='bookThumbnail' src={book.volumeInfo.imageLinks.thumbnail || 'https://img.freepik.com/premium-vector/book-cartoon_22350-95.jpg'} alt={book.volumeInfo.title} />
         <AddBtn onClick={bookClickHandler}>
-        {/* <Link to={{ pathname:`/book/${book.id}`, state: ({title: book.volumeInfo.title}, {pageCount: book.volumeInfo.pageCount})  }}  > */}
+        <Link to={{ pathname:`/book/${book.id}`}} book={book} >
           More Details
-        {/* </Link> */}
+        </Link>
         </AddBtn>
       </div>
     </StyledSearchResultsBookTile>
-        <BookDetailModal open={openModal} book={book} onClose={() => setOpenModal(false)} />
+    <Outlet />
+  
         </>
   )
 }
