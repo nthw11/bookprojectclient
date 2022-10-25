@@ -10,9 +10,9 @@ const BookSearchTile = (book) => {
   const singleBook = book.book
   console.log('singleBook', singleBook)
   // const [singleBook, setBooko] = useState(singleBook)
-  // const singleBookClickHandler = (singleBook) => {
-  //   singleBook.history.push(`book/${singleBook.id}`)
-  // }
+  const singleBookClickHandler = (singleBook) => {
+    singleBook.history.push(`book/${singleBook.id}`)
+  }
   if (singleBook){
 
     return (
@@ -22,7 +22,7 @@ const BookSearchTile = (book) => {
       <h4>{singleBook.volumeInfo.authors[0] || 'author'}</h4>
       <img src={singleBook.volumeInfo.imageLinks.thumbnail || 'https://as1.ftcdn.net/v2/jpg/01/95/35/78/1000_F_195357805_his1UjQcJqJiJohgiYnK5cwdVu8G5Ldd.jpg'} alt={singleBook.volumeInfo.title} />
       <button >
-        <Link to={{pathname: `book`, state:{book:singleBook}}} >
+        <Link to={`/search/book/${singleBook.id}`} state={{book}} >
           See More
           </Link>
       </button>

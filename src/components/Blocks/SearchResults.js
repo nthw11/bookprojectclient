@@ -1,5 +1,6 @@
 import React from 'react'
 import BookSearchTile from './BookSearchTile'
+import ErrorBoundary from './ErrorBoundary'
 
 const SearchResults = (books) => {
   const bookSearchArray = books.books
@@ -9,8 +10,12 @@ const SearchResults = (books) => {
       <h3>Search Results</h3>
       {
         bookSearchArray.map(book => {
+          console.log(book)
           return (
-          <BookSearchTile book={book} />
+          <ErrorBoundary>
+
+          <BookSearchTile book={book} key={book.id} />
+          </ErrorBoundary>
           )
         })
       }
