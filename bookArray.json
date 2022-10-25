@@ -1,0 +1,690 @@
+[
+  {
+    "kind": "books#volume",
+    "id": "CPId5YMUf_sC",
+    "etag": "fB+WbCN7K2o",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/CPId5YMUf_sC",
+    "volumeInfo": {
+      "title": "The Ear Book",
+      "authors": ["Al Perkins"],
+      "publisher": "Random House Books for Young Readers",
+      "publishedDate": "2008-05-27",
+      "description": "Illus. in full color. A boy and his dog listen to the world around them. \"Illustrations are big and simple; the text is in verse form.\"--School Library Journal.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_13",
+          "identifier": "9780375842795"
+        },
+        {
+          "type": "ISBN_10",
+          "identifier": "0375842799"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": false
+      },
+      "pageCount": 24,
+      "printType": "BOOK",
+      "categories": ["Juvenile Nonfiction"],
+      "averageRating": 4.5,
+      "ratingsCount": 2,
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.3.0.0.preview.0",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=CPId5YMUf_sC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=CPId5YMUf_sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=CPId5YMUf_sC&printsec=frontcover&dq=ear&hl=&cd=1&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=CPId5YMUf_sC&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/The_Ear_Book.html?hl=&id=CPId5YMUf_sC"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "PARTIAL",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=CPId5YMUf_sC&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Illus. in full color. A boy and his dog listen to the world around them. &quot;Illustrations are big and simple; the text is in verse form.&quot;--School Library Journal."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "cSyNEAAAQBAJ",
+    "etag": "8i7IY+emn6g",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/cSyNEAAAQBAJ",
+    "volumeInfo": {
+      "title": "The Ear Book",
+      "authors": ["Al Perkins"],
+      "publisher": "National Geographic Books",
+      "publishedDate": "2008-05-27",
+      "description": "Illus. in full color. A boy and his dog listen to the world around them. \"Illustrations are big and simple; the text is in verse form.\"--School Library Journal.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_13",
+          "identifier": "9780375842795"
+        },
+        {
+          "type": "ISBN_10",
+          "identifier": "0375842799"
+        }
+      ],
+      "readingModes": {
+        "text": true,
+        "image": false
+      },
+      "pageCount": 0,
+      "printType": "BOOK",
+      "categories": ["Juvenile Nonfiction"],
+      "averageRating": 4.5,
+      "ratingsCount": 2,
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "preview-1.0.0",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=cSyNEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=cSyNEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=cSyNEAAAQBAJ&dq=ear&hl=&cd=2&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=cSyNEAAAQBAJ&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/The_Ear_Book.html?hl=&id=cSyNEAAAQBAJ"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "NO_PAGES",
+      "embeddable": false,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=cSyNEAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "NONE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Illus. in full color. A boy and his dog listen to the world around them. &quot;Illustrations are big and simple; the text is in verse form.&quot;--School Library Journal."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "cOF0DwAAQBAJ",
+    "etag": "5oluohNGnxg",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/cOF0DwAAQBAJ",
+    "volumeInfo": {
+      "title": "The Cow with Ear Tag #1389",
+      "authors": ["Kathryn Gillespie"],
+      "publisher": "University of Chicago Press",
+      "publishedDate": "2018-11-12",
+      "description": "To translate the journey from a living cow to a glass of milk into tangible terms, Kathryn Gillespie set out to follow the moments in the life cycles of individual animals—animals like the cow with ear tag #1389. She explores how the seemingly benign practice of raising animals for milk is just one link in a chain that affects livestock across the agricultural spectrum. Gillespie takes readers to farms, auction yards, slaughterhouses, and even rendering plants to show how living cows become food. The result is an empathetic look at cows and our relationship with them, one that makes both their lives and their suffering real.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_13",
+          "identifier": "9780226582856"
+        },
+        {
+          "type": "ISBN_10",
+          "identifier": "022658285X"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 259,
+      "printType": "BOOK",
+      "categories": ["Science"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.0.1.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=cOF0DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=cOF0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=cOF0DwAAQBAJ&printsec=frontcover&dq=ear&hl=&cd=3&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=cOF0DwAAQBAJ&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/The_Cow_with_Ear_Tag_1389.html?hl=&id=cOF0DwAAQBAJ"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "PARTIAL",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": true,
+        "acsTokenLink": "http://books.google.com/books/download/The_Cow_with_Ear_Tag_1389-sample-pdf.acsm?id=cOF0DwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=cOF0DwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "To translate the journey from a living cow to a glass of milk into tangible terms, Kathryn Gillespie set out to follow the moments in the life cycles of individual animals—animals like the cow with ear tag #1389."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "SJhUEAAAQBAJ",
+    "etag": "2j1XFTfdW2I",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/SJhUEAAAQBAJ",
+    "volumeInfo": {
+      "title": "Happy EAR-ster!",
+      "authors": ["Jo Parker"],
+      "publisher": "Penguin",
+      "publishedDate": "2022-01-11",
+      "description": "A Touch-And-Feel board book perfect for Easter! Little ones will delight in this playful, rhyming adventure as they search for the real Easter Bunny! It's Easter today and there's a basket of sweets... But where, oh where, could it be? Explore the farm and touch all the animals... Can you find the Easter Bunny and his special treat?",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_13",
+          "identifier": "9780593384381"
+        },
+        {
+          "type": "ISBN_10",
+          "identifier": "0593384385"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": false
+      },
+      "pageCount": 11,
+      "printType": "BOOK",
+      "categories": ["Juvenile Fiction"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "preview-1.0.0",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=SJhUEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=SJhUEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=SJhUEAAAQBAJ&printsec=frontcover&dq=ear&hl=&cd=4&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=SJhUEAAAQBAJ&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Happy_EAR_ster.html?hl=&id=SJhUEAAAQBAJ"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "PARTIAL",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=SJhUEAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "A Touch-And-Feel board book perfect for Easter!"
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "FB0Asxq2KSQC",
+    "etag": "IF8WkoBK2rw",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/FB0Asxq2KSQC",
+    "volumeInfo": {
+      "title": "A Pocket Guide to the Ear",
+      "authors": ["Albert L. Menner"],
+      "publisher": "Thieme",
+      "publishedDate": "2003",
+      "description": "Diseases of the ear make up a large part of primary practice and can be challenging to diagnose and treat, especially for clinicians whose knowledge and expertise in otology may be limited. Concise and easy-to-read, here is your guide to almost everything that can go wrong with the ears - a brief clinical encyclopedia of ear disease. This book is based on the author's more than 25 years experience in a thriving ENT practice, and covers everything from proper equipment and examination methods, to anatomy and disorders of each region of the ear. The clear and succinct text is packed with valuable tools you can utilize in daily practice, and cuts through to important truths about ear symptoms, diagnoses, and treatment - information that is not always taught in medical training programs. This title is part of Thieme's acclaimed Flexibook series of clinical and basic science pocket guidebooks, which are sold worldwide and have been translated into more than 20 languages. Key features of this pocket reference: Comprehensive: complete and sound advice on nearly every common and rare ear disease seen by primary care physicians Concise: key facts communicated in 145 pages Easy-to-read: bold print stresses diagnostic and treatment concepts, and highlighted text emphasizes summary paragraphs and clinically important points Beautifully produced: over 40 full-color photographs and illustrations Practical: includes a comprehensive glossary of terms as well as a top ten list of common clinical misjudgments and how to avoid them Designed to be read from cover to cover, or as a reference when needed, this 145-page book is an essential professional tool - especially at a time when well-trained gatekeepers are crucial to high-quality healthcare. Here is the pocket guide anyone who treats or diagnoses ears and hearing - primary care physicians, family practitioners, pediatricians, otolaryngologists, audiologists, and more - needs to have at their disposal. Residents and students rotating through ENT will be amazed at the wealth of information provided in such a succinct text.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_10",
+          "identifier": "1588901394"
+        },
+        {
+          "type": "ISBN_13",
+          "identifier": "9781588901392"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 164,
+      "printType": "BOOK",
+      "categories": ["Medical"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.2.3.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=FB0Asxq2KSQC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=FB0Asxq2KSQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=FB0Asxq2KSQC&printsec=frontcover&dq=ear&hl=&cd=5&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=FB0Asxq2KSQC&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/A_Pocket_Guide_to_the_Ear.html?hl=&id=FB0Asxq2KSQC"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "PARTIAL",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": true,
+        "acsTokenLink": "http://books.google.com/books/download/A_Pocket_Guide_to_the_Ear-sample-pdf.acsm?id=FB0Asxq2KSQC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=FB0Asxq2KSQC&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "This book is based on the author&#39;s more than 25 years experience in a thriving ENT practice, and covers everything from proper equipment and examination methods, to anatomy and disorders of each region of the ear."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "MgUJAQAAMAAJ",
+    "etag": "ahyH6j7ftJ8",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/MgUJAQAAMAAJ",
+    "volumeInfo": {
+      "title": "Ear Training for the Body",
+      "subtitle": "A Dancer's Guide to Music",
+      "authors": ["Katherine Teck"],
+      "publisher": "Dance Horizons",
+      "publishedDate": "1994",
+      "description": "An approach to music from the dancer's viewpoint, this book offers a two-part exploration of music as it relates to dance, beginning with an introduction to aspects of musicality that dancers--and other music lovers--can explore and put into practice immediately.",
+      "industryIdentifiers": [
+        {
+          "type": "OTHER",
+          "identifier": "UOM:39015031159679"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": false
+      },
+      "pageCount": 321,
+      "printType": "BOOK",
+      "categories": ["Music"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.3.1.0.preview.0",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=MgUJAQAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=MgUJAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=MgUJAQAAMAAJ&q=ear&dq=ear&hl=&cd=6&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=MgUJAQAAMAAJ&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Ear_Training_for_the_Body.html?hl=&id=MgUJAQAAMAAJ"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "NO_PAGES",
+      "embeddable": false,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=MgUJAQAAMAAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "NONE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "An approach to music from the dancer&#39;s viewpoint, this book offers a two-part exploration of music as it relates to dance, beginning with an introduction to aspects of musicality that dancers--and other music lovers--can explore and put ..."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "QkbzDwAAQBAJ",
+    "etag": "gyS4U7BB0zk",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/QkbzDwAAQBAJ",
+    "volumeInfo": {
+      "title": "The Ear Book",
+      "subtitle": "A Complete Guide to Ear Disorders and Health",
+      "authors": ["Thomas J. Balkany", "Kevin D. Brown"],
+      "publisher": "Johns Hopkins University Press",
+      "publishedDate": "2017-06-30",
+      "description": "Balkany and Brown address such common questions as: Can dizziness be cured? How loud is too loud? Why do my ears ring? Do cochlear implants work for nerve deafness? What promise do innovations in gene therapy and stem cell therapy hold for the future? Fully illustrated and including helpful tables, hearing preservation tips, a glossary of terms, lists of ear medications and resources, and suggestions for further reading, The Ear Book is sure to be a welcome family guide.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_13",
+          "identifier": "9781421422855"
+        },
+        {
+          "type": "ISBN_10",
+          "identifier": "1421422859"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 256,
+      "printType": "BOOK",
+      "categories": ["Medical"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.0.1.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=QkbzDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=QkbzDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=QkbzDwAAQBAJ&printsec=frontcover&dq=ear&hl=&cd=7&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=QkbzDwAAQBAJ&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/The_Ear_Book.html?hl=&id=QkbzDwAAQBAJ"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "PARTIAL",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": true,
+        "acsTokenLink": "http://books.google.com/books/download/The_Ear_Book-sample-pdf.acsm?id=QkbzDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=QkbzDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Fully illustrated and including helpful tables, hearing preservation tips, a glossary of terms, lists of ear medications and resources, and suggestions for further reading, The Ear Book is sure to be a welcome family guide."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "dWavQQAACAAJ",
+    "etag": "7Dhm9ajWHbg",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/dWavQQAACAAJ",
+    "volumeInfo": {
+      "title": "The Broken Ear",
+      "authors": ["Hergé"],
+      "publisher": "Little, Brown Books for Young Readers",
+      "publishedDate": "1978-05-30",
+      "description": "The classic graphic novel. A sacred tribal statue has been stolen from the museum! Tintin and Snowy are on the case! Clues lead them straight into the heart of the jungle.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_10",
+          "identifier": "0316358509"
+        },
+        {
+          "type": "ISBN_13",
+          "identifier": "9780316358507"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": false
+      },
+      "pageCount": 62,
+      "printType": "BOOK",
+      "categories": ["Juvenile Fiction"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "preview-1.0.0",
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=dWavQQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=dWavQQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=dWavQQAACAAJ&dq=ear&hl=&cd=8&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=dWavQQAACAAJ&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/The_Broken_Ear.html?hl=&id=dWavQQAACAAJ"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "NO_PAGES",
+      "embeddable": false,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=dWavQQAACAAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "NONE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "The classic graphic novel. A sacred tribal statue has been stolen from the museum! Tintin and Snowy are on the case! Clues lead them straight into the heart of the jungle."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "iiFGcl1Jt2oC",
+    "etag": "ldKeVM3mrk0",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/iiFGcl1Jt2oC",
+    "volumeInfo": {
+      "title": "No More Antibiotics",
+      "subtitle": "Preventing and Treating Ear and Respiratory Infections the Natural Way",
+      "authors": ["Mary Ann Block"],
+      "publisher": "Kensington Books",
+      "publishedDate": "2000-01-01",
+      "description": "An insightful and essential guide illustrates how antibiotics can put the health of children at risk and provides ways to prevent ear and respiratory infection by identifying such factors as airborne allergies, food sensitivities, and poor nutrition, in order to strengthen the immune system. Reprint.",
+      "industryIdentifiers": [
+        {
+          "type": "ISBN_10",
+          "identifier": "157566500X"
+        },
+        {
+          "type": "ISBN_13",
+          "identifier": "9781575665009"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 148,
+      "printType": "BOOK",
+      "categories": ["Health & Fitness"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.1.3.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=iiFGcl1Jt2oC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=iiFGcl1Jt2oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=iiFGcl1Jt2oC&printsec=frontcover&dq=ear&hl=&cd=9&source=gbs_api",
+      "infoLink": "http://books.google.com/books?id=iiFGcl1Jt2oC&dq=ear&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/No_More_Antibiotics.html?hl=&id=iiFGcl1Jt2oC"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "PARTIAL",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": true,
+        "acsTokenLink": "http://books.google.com/books/download/No_More_Antibiotics-sample-pdf.acsm?id=iiFGcl1Jt2oC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=iiFGcl1Jt2oC&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "An insightful and essential guide illustrates how antibiotics can put the health of children at risk and provides ways to prevent ear and respiratory infection by identifying such factors as airborne allergies, food sensitivities, and poor ..."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "Qu8HoCBhWIEC",
+    "etag": "CeNDOGA89No",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/Qu8HoCBhWIEC",
+    "volumeInfo": {
+      "title": "The Human Ear",
+      "subtitle": "Its Identifiction and Physiognomy",
+      "authors": ["Miriam Anne Ellis"],
+      "publishedDate": "1900",
+      "industryIdentifiers": [
+        {
+          "type": "OTHER",
+          "identifier": "UOM:39015062198455"
+        }
+      ],
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 225,
+      "printType": "BOOK",
+      "categories": ["Ear"],
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.5.8.0.full.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=Qu8HoCBhWIEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=Qu8HoCBhWIEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com/books?id=Qu8HoCBhWIEC&printsec=frontcover&dq=ear&hl=&cd=10&source=gbs_api",
+      "infoLink": "https://play.google.com/store/books/details?id=Qu8HoCBhWIEC&source=gbs_api",
+      "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Qu8HoCBhWIEC"
+    },
+    "saleInfo": {
+      "country": "US",
+      "saleability": "FREE",
+      "isEbook": true,
+      "buyLink": "https://play.google.com/store/books/details?id=Qu8HoCBhWIEC&rdid=book-Qu8HoCBhWIEC&rdot=1&source=gbs_api"
+    },
+    "accessInfo": {
+      "country": "US",
+      "viewability": "ALL_PAGES",
+      "embeddable": true,
+      "publicDomain": true,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false,
+        "downloadLink": "http://books.google.com/books/download/The_Human_Ear.epub?id=Qu8HoCBhWIEC&hl=&output=epub&source=gbs_api"
+      },
+      "pdf": {
+        "isAvailable": true,
+        "downloadLink": "http://books.google.com/books/download/The_Human_Ear.pdf?id=Qu8HoCBhWIEC&hl=&output=pdf&sig=ACfU3U3sq4sanskU7-9xLtUT2ysW5N2s1A&source=gbs_api"
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=Qu8HoCBhWIEC&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+      "quoteSharingAllowed": false
+    }
+  }
+]
