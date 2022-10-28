@@ -3,7 +3,19 @@ import { Link, history } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledSingleBook = styled.div`
-  border: 1px solid black;
+  border-top: 1px solid black;
+  
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  img{ 
+    height: 150px;
+    }
+  button{
+    height: 75px;
+    align-self: center;
+  }
 `
 
 const BookDisplayTile = (book) => {

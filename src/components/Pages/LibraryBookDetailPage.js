@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useLocation, redirect, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faCircle, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
-import { faCircle as faRegCircle } from '@fortawesome/free-regular-svg-icons'
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// import { faCircle, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
+// import { faCircle as faRegCircle } from '@fortawesome/free-regular-svg-icons'
 import axios from 'axios'
 import userAlfie from '../../user'
 import Header from '../Blocks/Header'
@@ -46,9 +46,6 @@ const StyledBookDetail = styled.div`
   .ratingDiv{
     grid-column: 4 / 5;
     grid-row: 1;
-    /* input[type="radio"]{
-      display: none;
-    } */
     input{
     margin: 10px 5px;
     }
@@ -65,6 +62,9 @@ const StyledBookDetail = styled.div`
     font-size: .95em;
     color: #333;
   }
+  .title{
+    font-style: italic;
+  }
 `
 
 
@@ -72,8 +72,13 @@ const LibraryBookDetailPage = (state) => {
   const navigate = useNavigate()
   let location = useLocation()
   const data = location.state?.book.book
-  console.log('library book data', data)
+  console.log(data)
   const [rating, setRating] = useState(data.userRating)
+  const [newCurrentlyReading, setNewCurrentlyReading] = useState()
+  const [newFinishedReading, setNewFinishedReading] = useState()
+  const [newUpNext, setNewUpNext] = useState()
+
+
   const removeFromLibHandler = async (e) => {
     e.preventDefault()
     await axios({
@@ -84,9 +89,54 @@ const LibraryBookDetailPage = (state) => {
         return navigate("/user")
       }
     })
-    
   }
-
+   
+  
+  const updateCurrentlyReadingState = async () => {
+    await axios({
+      method: "put",
+      url: `${API}/user/${userAlfie._id}/book-update`,
+      data: {
+        newCurrentlyReading : data._id,
+      }
+    }).then(response => {
+      console.log(response)
+      if(response.status === 200){
+        return navigate('/user')
+      }
+    })
+  }  
+  
+  const updateUpNext = async () => {
+    await axios({
+      method: "put",
+      url: `${API}/user/${userAlfie._id}/book-update`,
+      data: {
+        newUpNext: data._id,
+      }
+    }).then(response => {
+      console.log(response)
+      if(response.status === 200){
+        return navigate('/user')
+      }
+    })
+  }  
+  
+  const updateFinishedReading = async () => {
+    await axios({
+      method: "put",
+      url: `${API}/user/${userAlfie._id}/book-update`,
+      data: {
+        newFinishedReading: data._id
+      }
+    }).then(response => {
+      console.log(response)
+      if(response.status === 200){
+        return navigate('/user')
+      }
+    })
+  }  
+  
   const editBookHandler = async (e) => {
     e.preventDefault()
     const response = await axios({
@@ -97,7 +147,7 @@ const LibraryBookDetailPage = (state) => {
       // newCategories,
       // newImageLink,
       // newTags,
-      // newNotes 
+      // newNotes,
       // }
     }).then(response => {
       if(response.status === 200){
@@ -164,6 +214,16 @@ const LibraryBookDetailPage = (state) => {
         
 
       <div className="buttonDiv">
+      <button onClick={updateUpNext}>
+        Add to Up Next
+      </button >
+      <button onClick={updateCurrentlyReadingState}>
+        Set as Currently Reading
+      </button >
+      <p>Note: this will replace {`current book`}</p>
+      <button onClick={updateFinishedReading}>
+        Mark <span className='title'>{data.title}</span> as read
+      </button>
       <button onClick={removeFromLibHandler} >
         Remove From My Library
       </button>

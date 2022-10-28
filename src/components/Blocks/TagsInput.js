@@ -46,14 +46,13 @@ const StyledTagsInputWrapper = styled.div`
   }
 `
 
-const TagsInput = ({tags: tags, user: user, bookId: bookId}) => {
+const TagsInput = ({tags, user, bookId}) => {
   const [newTags, setNewTags] = useState([...tags])
   const [ tagUser ] = useState(user)
   const [ tagBookId ] = useState(bookId)
 
 
   const updateTags = async () => {
-    // e.preventDefault()
     await axios({
       method: "put",
       url: `${API}/user/book/${tagUser}/${tagBookId}`,
@@ -62,22 +61,27 @@ const TagsInput = ({tags: tags, user: user, bookId: bookId}) => {
       }
     }).then(response => {
       if(response.status === 200){
-        console.log('updated tags')
+        console.log('updated tags', newTags)
+
       }
     })
   }
 
-  const handleKeyDown = (e) => {
+  const handleTagInput = (e) => {
     if(e.key !== 'Enter') return
     const value = e.target.value
     if(!value.trim()) return
+    console.log(newTags)
     setNewTags([...newTags, value])
+    console.log(value)
+    console.log(newTags)
     updateTags()
     e.target.value = ''
   }
 
-  const removeTag = (index) => {
-    setNewTags(newTags.filter((el, i) => i !== index))
+  const handleRemoveTag = (index) => {
+    setNewTags(newTags.filter((element, idx) => idx !== index))
+    console.log(`newTags: ${newTags}`)
     updateTags()
   }
 
@@ -89,10 +93,10 @@ const TagsInput = ({tags: tags, user: user, bookId: bookId}) => {
       {newTags.map((tag, index)=> (
         <div className="tagItem" key={index}>
         <span className='text'>{tag}</span>
-        <span className='close' onClick={() => removeTag(index)}>x</span>
+        <span className='close' onClick={() => handleRemoveTag(index)}>x</span>
       </div>
       ))}
-      <input className='input' type="text" placeholder='add new tag' onKeyDown={handleKeyDown} />
+      <input className='input' type="text" placeholder='add new tag' onKeyDown={handleTagInput} />
     </StyledTagsInputWrapper>
     </>
   )
