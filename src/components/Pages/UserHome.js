@@ -13,11 +13,11 @@ const UserHomePageWrapper = styled.div`
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(2 auto);
   .upNextWrapper{
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 1;
   }
   .currentlyReading{
-    grid-column: 3 / 8;
+    grid-column: 5 / 9;
     grid-row: 1;
   }
   .unsortedLibrary{
@@ -31,10 +31,10 @@ const UserHomePageWrapper = styled.div`
 
 const Home = () => {
   const [ isLoading, setLoading ] = useState(true)
-  const [userBooks, setUserBooks] = useState('')
+  // const [userBooks, setUserBooks] = useState('')
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
-
+  let userUpNextArray = []
   const fetchUserInfo = async () => {
     const url = `${API}/user/${userAlfie._id}`
     const config = {
@@ -43,25 +43,14 @@ const Home = () => {
     }
     await axios(config).then((incomingUserData) => {
       setUserData(incomingUserData)
+      setLoading(false)
+      
     })
     console.log(userData)
   }
 
-  const fetchUserBooks = async () => {
-    const url = `${API}/user/book/${userAlfie._id}/books`
-    const config = {
-      method: 'get',
-      url
-    }
-
-    await axios(config).then((data) => {
-      setUserBooks(data)
-      setLoading(false)
-    })
-  }
-  
   useEffect(()=> {
-    fetchUserBooks()
+    // fetchUserBooks()
     fetchUserInfo()
   },[])
   
@@ -73,31 +62,33 @@ const Home = () => {
       </div>
     )
   } 
-  userBooksArray = userBooks.data.bookshelves.allBooks
-  
+  userBooksArray = userData.data.allBooks
+  userUpNextArray = userData.data.upNext
+  console.log(userUpNextArray)
   return (
     <>
       <Header />
-    <UserHomePageWrapper>
       <h1>Home</h1>
-      <h4>Welcome {userBooks.data.username}</h4>
+      <h4>Welcome {userData.data.username}</h4>
+    <UserHomePageWrapper>
       <div className="upNextWrapper">
       
         <h2>Up Next</h2>
-        {userBooks.data.bookshelves.upNext.length > 0 && userBooks.data.bookshelves.upNext.map(book => {
+        {userUpNextArray.length > 0 && userUpNextArray.map(book => {
           return(
+            // <h2>{book.title}</h2>
             <BookDisplayTile key={book._id} book={book} />
           )
         })}
       </div>
       <div className="currentlyReading">
-        {userBooks.data.currentlyReading &&
-      <LargeBookDisplayTile book={userBooks.data.currentlyReading} />
+        {userData.data.currentlyReading &&
+      <LargeBookDisplayTile book={userData.data.currentlyReading} />
         }
       </div>
       <div className='unsortedLibrary'>
         <h2>Library</h2>
-        { userBooksArray.length > 0 && userBooksArray.map(book => {
+        { userBooksArray && userBooksArray.map(book => {
           return (
             <BookDisplayTile key={book._id} book={book} />
             

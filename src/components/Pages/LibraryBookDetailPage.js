@@ -68,11 +68,13 @@ const StyledBookDetail = styled.div`
 `
 
 
-const LibraryBookDetailPage = (state) => {
+const LibraryBookDetailPage = ({state}) => {
   const navigate = useNavigate()
   let location = useLocation()
-  const data = location.state?.book.book
+  
+  const data = location.state?.book.book 
   console.log(data)
+  
   const [rating, setRating] = useState(data.userRating)
   const [newCurrentlyReading, setNewCurrentlyReading] = useState()
   const [newFinishedReading, setNewFinishedReading] = useState()
