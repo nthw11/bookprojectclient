@@ -10,6 +10,7 @@ import SearchPage from './components/Pages/SearchPage'
 import reportWebVitals from './reportWebVitals';
 import SearchBookDetailPage from './components/Pages/SearchBookDetailPage';
 import LibraryBookDetailPage from './components/Pages/LibraryBookDetailPage';
+import NewUser from './components/Pages/NewUser';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
     <Routes >
       <Route path='/' element={<Home />} />
       <Route path='/user' element={<UserHome />} />
+      <Route path='/user/new-user' element={<NewUser />} />
       <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
       <Route path='/search' element={<SearchPage /> }/>
       <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />

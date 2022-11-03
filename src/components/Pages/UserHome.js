@@ -5,27 +5,34 @@ import styled from 'styled-components'
 import userAlfie from '../../user'
 import BookDisplayTile from '../Blocks/BookDisplayTile'
 import LargeBookDisplayTile from '../Blocks/LargeBookDisplayTile'
+import BookshelvesBar from '../Blocks/BookshelvesBar'
 const API = process.env.REACT_APP_BACKEND_API
 
 const UserHomePageWrapper = styled.div`
   border: 1px solid green;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(2 auto);
+  grid-template-rows: repeat(3 auto);
   .upNextWrapper{
-    grid-column: 1 / 4;
+    grid-column: 2 / 6;
     grid-row: 1;
   }
   .currentlyReading{
-    grid-column: 5 / 9;
+    grid-column: 7 / 12;
     grid-row: 1;
   }
+  .bookShelvesSection{
+    grid-column: 1 / 12;
+    grid-row: 2;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    }
   .unsortedLibrary{
     margin: 15px;
     border: 1px solid black;
     border-radius: 10px;
     grid-column: 1 / 5;
-    grid-row: 2;
+    grid-row: 3;
   }
 `
 
@@ -64,7 +71,7 @@ const Home = () => {
   } 
   userBooksArray = userData.data.allBooks
   userUpNextArray = userData.data.upNext
-  console.log(userUpNextArray)
+  
   return (
     <>
       <Header />
@@ -76,7 +83,6 @@ const Home = () => {
         <h2>Up Next</h2>
         {userUpNextArray.length > 0 && userUpNextArray.map(book => {
           return(
-            // <h2>{book.title}</h2>
             <BookDisplayTile key={book._id} book={book} />
           )
         })}
@@ -86,12 +92,15 @@ const Home = () => {
       <LargeBookDisplayTile book={userData.data.currentlyReading} />
         }
       </div>
+      {/* <div className="bookShelvesSection">
+        <BookshelvesBar user={userData.data}/>
+      
+      </div> */}
       <div className='unsortedLibrary'>
         <h2>Library</h2>
         { userBooksArray && userBooksArray.map(book => {
           return (
             <BookDisplayTile key={book._id} book={book} />
-            
           )
         })}
       </div>

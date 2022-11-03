@@ -66,7 +66,8 @@ height: auto;
 
 
 
-const LargeBookDisplayTile = ({book}) => {
+const LargeBookDisplayTile = ({book: book}) => {
+  console.log(book)
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
 
@@ -107,7 +108,7 @@ const LargeBookDisplayTile = ({book}) => {
         <h4>Published Date: <span className="bookDetailsSpand">{book.publishedDate}</span> </h4>
       </div>
       <div className="descriptionDiv">
-      <p>{book.description ? book.description.slice(0, 400) : ''}... <span className='seeMore'><Link to={`/user/book/${book._id} `} book={{book}}> See More</Link></span></p>
+      <p>{book.description ? book.description.slice(0, 400) : ''}... <span className='seeMore'><Link to={`/user/book/${book._id}`} state={book}> See More</Link></span></p>
       </div>
       <div className="buttonDiv">
         <button onClick={updateFinishedReading}>Finished Reading</button>
