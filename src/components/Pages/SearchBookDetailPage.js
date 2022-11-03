@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Header from '../Blocks/Header'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 import userAlfie from '../../user'
@@ -14,24 +14,13 @@ const StyledBookDetail = styled.div`
 `
 
 
-const BookDetailPage = (state) => {
-
+const SearchBookDetailPage = (state) => {
+  const navigate = useNavigate()
   let location = useLocation()
   const data = location.state?.book.book
-  console.log('book data', data)
+  // console.log('book data', data)
   const addBookToLibHandler = async (e) => {
     e.preventDefault()
-    const newBook = {
-      title: data.volumeInfo.title,
-      subtitle: data.volumeInfo.subtitle,
-      authors: data.volumeInfo.authors,
-      pageCount: data.volumeInfo.pageCount,
-      publishedDate: data.volumeInfo.PublishedDate,
-      categories: data.volumeInfo.categories,
-      imageLink: data.volumeInfo.imageLinks.thumbnail,
-      publisher: data.volumeInfo.publisher,
-    }
-    console.log(newBook)
     const response = await axios({
       method: "post",
       url: `${API}/user/book/${userAlfie._id}/add-book`,
@@ -40,21 +29,17 @@ const BookDetailPage = (state) => {
       subtitle: data.volumeInfo.subtitle,
       authors: data.volumeInfo.authors,
       pageCount: data.volumeInfo.pageCount,
-      publishedDate: data.volumeInfo.PublishedDate,
+      publishedDate: data.volumeInfo.publishedDate,
       categories: data.volumeInfo.categories,
+      description: data.volumeInfo.description,
       imageLink: data.volumeInfo.imageLinks.thumbnail,
       publisher: data.volumeInfo.publisher,
+      userRating: 0
       }
     }).then(response => {
       if(response.status === 200){
-        return (
-          <div>
-            <h2>Book has been successfully added to your library!</h2>
-          </div>
-        )
+        return navigate("/user")
       }
-      console.log(response)
-      
     })
     
   }
@@ -87,4 +72,4 @@ const BookDetailPage = (state) => {
 }
 }
 
-export default BookDetailPage
+export default SearchBookDetailPage

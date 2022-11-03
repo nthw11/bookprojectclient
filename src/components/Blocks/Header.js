@@ -12,6 +12,9 @@ const Header = () => {
             Log Out
             </li>
           </Link>
+          <Link to={"/user/new-user"}>
+            <li>New User</li>
+          </Link>
           <Link to={"/user"}>
           <li>Log In</li>
           </Link>
