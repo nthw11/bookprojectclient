@@ -8,7 +8,25 @@ import styled from 'styled-components'
 const API = process.env.REACT_APP_BACKEND_API
 
 const StyledNewUserForm = styled.div`
-  
+max-width: 40vw;
+margin: 20px;
+border: 1px solid black;
+border-radius: 10px;
+padding: 20px;
+
+
+input{
+  display: block;
+}  
+
+button{
+  margin-top: 25px;
+  background-color: #bb2200;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
 `
 
 const NewUser = () => {
@@ -33,7 +51,7 @@ const NewUser = () => {
         avatarUrl,
         password
       },
-      url: `${API}/user`
+      url: `${API}/login/register`
     }
     await axios(config).then((userData) => {
       console.log(userData)
@@ -48,8 +66,9 @@ const NewUser = () => {
   return (
     <div>
       <Header />
-      <h2>New User Page</h2>
+      
       <StyledNewUserForm>
+        <h1>Register new user</h1>
       {/* <form onSubmit={createNewUserHandler}> */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Username</label>

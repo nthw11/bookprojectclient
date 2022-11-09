@@ -10,7 +10,9 @@ import SearchPage from './components/Pages/SearchPage'
 import reportWebVitals from './reportWebVitals';
 import SearchBookDetailPage from './components/Pages/SearchBookDetailPage';
 import LibraryBookDetailPage from './components/Pages/LibraryBookDetailPage';
+import SearchClubDetailPage from './components/Pages/SearchClubDetailPage';
 import NewUser from './components/Pages/NewUser';
+import ClubPage from './components/Pages/ClubPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +25,8 @@ root.render(
       <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
       <Route path='/search' element={<SearchPage /> }/>
       <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
+      <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
+      <Route path='/clubs/:clubId' element={<ClubPage />} />
       
     </Routes>
     </BrowserRouter>
