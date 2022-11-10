@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext} from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
 import styled from 'styled-components'
-import userAlfie from '../../user'
 import BookDisplayTile from '../Blocks/BookDisplayTile'
 import LargeBookDisplayTile from '../Blocks/LargeBookDisplayTile'
 import BookshelvesBar from '../Blocks/BookshelvesBar'
 import UserContext from '../../contexts/user-context'
+import UserInfo from '../Blocks/UserInfo'
 const API = process.env.REACT_APP_BACKEND_API
 
 const UserHomePageWrapper = styled.div`
@@ -79,8 +79,8 @@ const Home = () => {
   return (
     <>
       <Header />
-      <h1>Home</h1>
-      <h4>Welcome {userData.data.username}</h4>
+      <UserInfo user={userContext}/>
+
     <UserHomePageWrapper>
       <div className="upNextWrapper">
       

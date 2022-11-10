@@ -15,11 +15,8 @@ import ClubPage from './components/Pages/ClubPage';
 import UserContext from './contexts/user-context';
 import Login from './components/Pages/Login';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-
-      <UserContext.Provider value={{  username: '',
+export const initialUserContext = {
+  username: '',
       _id: '',
   firstname: '',
   lastname: '',
@@ -34,21 +31,25 @@ root.render(
   finishedReading: [],
   upNext: [],
   bookshelves: [],
-  tags: []}}>
+  tags: []
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+
+      <UserContext.Provider value={ initialUserContext }>
     <BrowserRouter>
     <Routes >
       <Route path='/' element={<Home />} />
       <Route path='/user' element={<UserHome />} />
-        <Route path='/user/login' element={<Login />} />
-        <Route path='/user/new-user' element={<NewUser />} />
-        <Route path='book/:bookId' element={<LibraryBookDetailPage />} />
-
-      {/* </Route> */}
-      <Route path='search' element={<SearchPage /> }>
-        <Route path='book/:bookId' element={<SearchBookDetailPage />} />
-        <Route path='club/:clubId' element={<SearchClubDetailPage />} />
-      </Route>
-      <Route path='clubs/:clubId' element={<ClubPage />} />
+      <Route path='/user/login' element={<Login />} />
+      <Route path='/user/new-user' element={<NewUser />} />
+      <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
+      <Route path='/search' element={<SearchPage /> } />
+      <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
+      <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
+      <Route path='/clubs/:clubId' element={<ClubPage />} />
     </Routes>
     </BrowserRouter>
       </UserContext.Provider>

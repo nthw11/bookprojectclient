@@ -61,6 +61,7 @@ const NewUser = () => {
       userContext.avatarUrl = userData.data.user.avatarUrl
       console.log(userData.data.user)
       console.log(userContext)
+      localStorage.setItem("token", userData.data.token)
     })
     return navigate("/user")
 

@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { useLocation, redirect, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 // import { faCircle, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
 // import { faCircle as faRegCircle } from '@fortawesome/free-regular-svg-icons'
 import axios from 'axios'
-import userAlfie from '../../user'
+
 import Header from '../Blocks/Header'
 import TagsInput from '../Blocks/TagsInput'
-
+import UserContext from '../../contexts/user-context'
 // Edit Book: put/:userId/:bookId :::
 // Data to send: userId/bookId (params)
 // newUserRating, newCategories, newImageLink, newTags, newNotes (body)
@@ -69,6 +69,8 @@ const StyledBookDetail = styled.div`
 
 
 const LibraryBookDetailPage = ({state}) => {
+  const userContext = useContext(UserContext)
+
   const navigate = useNavigate()
   let location = useLocation()
   
@@ -85,7 +87,7 @@ const LibraryBookDetailPage = ({state}) => {
     e.preventDefault()
     await axios({
       method: "delete",
-      url: `${API}/user/book/${userAlfie._id}/${data._id}`
+      url: `${API}/user/book/${userContext._id}/${data._id}`
     }).then(response => {
       if(response.status === 200){
         return navigate("/user")
@@ -97,7 +99,7 @@ const LibraryBookDetailPage = ({state}) => {
   const updateCurrentlyReadingState = async () => {
     await axios({
       method: "put",
-      url: `${API}/user/${userAlfie._id}/book-update`,
+      url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newCurrentlyReading : data._id,
       }
@@ -112,7 +114,7 @@ const LibraryBookDetailPage = ({state}) => {
   const updateUpNext = async () => {
     await axios({
       method: "put",
-      url: `${API}/user/${userAlfie._id}/book-update`,
+      url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newUpNext: data._id,
       }
@@ -127,7 +129,7 @@ const LibraryBookDetailPage = ({state}) => {
   const updateFinishedReading = async () => {
     await axios({
       method: "put",
-      url: `${API}/user/${userAlfie._id}/book-update`,
+      url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newFinishedReading: data._id
       }
@@ -143,7 +145,7 @@ const LibraryBookDetailPage = ({state}) => {
     e.preventDefault()
     const response = await axios({
       method: "put",
-      url: `${API}/user/book/${userAlfie._id}/${data._id}`,
+      url: `${API}/user/book/${userContext._id}/${data._id}`,
       // data: {
       // newUserRating,
       // newCategories,
@@ -211,7 +213,7 @@ const LibraryBookDetailPage = ({state}) => {
         {/* <FontAwesomeIcon icon={faCircleHalfStroke} /> */}
       </div>
       <div className="tagsDiv">
-        <TagsInput tags={data.tags} user={userAlfie._id} bookId={data._id}/>
+        <TagsInput tags={data.tags} user={userContext._id} bookId={data._id}/>
       </div>
         
 

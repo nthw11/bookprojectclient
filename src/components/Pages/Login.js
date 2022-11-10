@@ -42,9 +42,9 @@ const loginHandler = async (data) => {
       userContext.currentlyReading = userData.data.user.currentlyReading
       userContext.finishedReading = userData.data.user.finishedReading
       userContext.upNext = userData.data.user.upNext
-      userContext.bookShelves = userData.data.user.bookShelves
+      userContext.bookshelves = userData.data.user.bookShelves
       userContext.tags = userData.data.user.tags
-
+      localStorage.setItem("token", userData.data.token)
     })
     return navigate("/user")
 }
