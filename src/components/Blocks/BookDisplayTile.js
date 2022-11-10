@@ -20,7 +20,7 @@ const StyledSingleBook = styled.div`
 
 const BookDisplayTile = (book) => {
   const singleBook = book.book
-  console.log('singleBook', singleBook)
+  // console.log('singleBook', singleBook)
   if (singleBook){
 
     return (

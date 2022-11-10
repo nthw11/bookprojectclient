@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext} from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -6,6 +6,7 @@ import userAlfie from '../../user'
 import BookDisplayTile from '../Blocks/BookDisplayTile'
 import LargeBookDisplayTile from '../Blocks/LargeBookDisplayTile'
 import BookshelvesBar from '../Blocks/BookshelvesBar'
+import UserContext from '../../contexts/user-context'
 const API = process.env.REACT_APP_BACKEND_API
 
 const UserHomePageWrapper = styled.div`
@@ -37,13 +38,16 @@ const UserHomePageWrapper = styled.div`
 `
 
 const Home = () => {
+  const userContext = useContext(UserContext)
+  console.log(userContext)
+  
   const [ isLoading, setLoading ] = useState(true)
   // const [userBooks, setUserBooks] = useState('')
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
   let userUpNextArray = []
   const fetchUserInfo = async () => {
-    const url = `${API}/user/${userAlfie._id}`
+    const url = `${API}/user/${userContext._id}`
     const config = {
       method: 'get',
       url

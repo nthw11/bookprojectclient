@@ -37,7 +37,7 @@ const Header = () => {
           <Link to={"/user/new-user"}>
             <li>New User</li>
           </Link>
-          <Link to={"/user"}>
+          <Link to={"/user/login"}>
           <li>Log In</li>
           </Link>
           <Link to={"/search"}>

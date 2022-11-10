@@ -67,7 +67,7 @@ height: auto;
 
 
 const LargeBookDisplayTile = ({book: book}) => {
-  console.log(book)
+  // console.log(book)
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
 

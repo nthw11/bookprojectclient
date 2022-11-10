@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import Header from '../Blocks/Header'
 import styled from 'styled-components'
+import UserContext from '../../contexts/user-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 
@@ -30,14 +31,11 @@ button{
 `
 
 const NewUser = () => {
+  const userContext = useContext(UserContext)
   const navigate = useNavigate()
-  const [newUser, setNewUser] = useState('')
+  
   const { register, handleSubmit, watch, formState: {errors} } = useForm()
 
-  const createNewUserHandler = async (e) =>{
-    e.preventDefault()
-    console.log(e)
-  }
   const onSubmit = async data => {
     const {username, firstname, lastname, email, phone, avatarUrl, password} = data
     const config = {
@@ -54,12 +52,18 @@ const NewUser = () => {
       url: `${API}/login/register`
     }
     await axios(config).then((userData) => {
-      console.log(userData)
-    }).then(response => {
-      if(response.status === 200){
-        return navigate("/user")
-      }
+      userContext._id = userData.data.user._id
+      userContext.username = userData.data.user.username
+      userContext.firstname = userData.data.user.firstname
+      userContext.lastname = userData.data.user.lastname
+      userContext.email = userData.data.user.email
+      userContext.phone = userData.data.user.phone
+      userContext.avatarUrl = userData.data.user.avatarUrl
+      console.log(userData.data.user)
+      console.log(userContext)
     })
+    return navigate("/user")
+
 
   }
 
