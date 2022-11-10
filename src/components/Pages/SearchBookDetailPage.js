@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Header from '../Blocks/Header'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
-import userAlfie from '../../user'
+import UserContext from '../../contexts/user-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 const StyledBookDetail = styled.div`
@@ -15,6 +15,8 @@ const StyledBookDetail = styled.div`
 
 
 const SearchBookDetailPage = (state) => {
+  const userContext = useContext(UserContext)
+
   const navigate = useNavigate()
   let location = useLocation()
   const data = location.state?.book.book
@@ -23,7 +25,7 @@ const SearchBookDetailPage = (state) => {
     e.preventDefault()
     const response = await axios({
       method: "post",
-      url: `${API}/user/book/${userAlfie._id}/add-book`,
+      url: `${API}/user/book/${userContext._id}/add-book`,
       data: {
         title: data.volumeInfo.title,
       subtitle: data.volumeInfo.subtitle,

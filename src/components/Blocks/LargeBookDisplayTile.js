@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { format } from 'date-fns'
 import { Link, useNavigate } from 'react-router-dom'
-import userAlfie from '../../user'
+import UserContext from '../../contexts/user-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 const LargeBookDisplayTileWrapper = styled.div`
@@ -67,14 +67,16 @@ height: auto;
 
 
 const LargeBookDisplayTile = ({book: book}) => {
-  console.log(book)
+  // console.log(book)
+  const userContext = useContext(UserContext)
+
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
 
   const updateFinishedReading = async () => {
     await axios({
       method: "put",
-      url: `${API}/user/${userAlfie._id}/book-update`,
+      url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newFinishedReading: book._id,
         newCurrentlyReading: 'next'

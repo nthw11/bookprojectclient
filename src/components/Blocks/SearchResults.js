@@ -1,12 +1,17 @@
 import React from 'react'
 import BookSearchTile from './BookSearchTile'
 import ErrorBoundary from './ErrorBoundary'
+import styled from 'styled-components'
+
+const StyledSearchResults = styled.div`
+  padding: 20px;
+`
 
 const SearchResults = (books) => {
   const bookSearchArray = books.books
   console.log(bookSearchArray)
   return (
-    <div>
+    <StyledSearchResults>
       <h3>Search Results</h3>
       {
         bookSearchArray.map(book => {
@@ -20,7 +25,7 @@ const SearchResults = (books) => {
         })
       }
 
-    </div>
+    </StyledSearchResults>
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import userAlfie from '../../user'
+
 
 const API = process.env.REACT_APP_BACKEND_API
 
