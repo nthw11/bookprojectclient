@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 const StyledSearchResults = styled.div`
   padding: 20px;
+  margin: auto;
 `
 
 const SearchResults = (books) => {
@@ -12,7 +13,7 @@ const SearchResults = (books) => {
   console.log(bookSearchArray)
   return (
     <StyledSearchResults>
-      <h3>Search Results</h3>
+      
       {
         bookSearchArray.map(book => {
           console.log(book)

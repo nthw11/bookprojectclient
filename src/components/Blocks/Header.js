@@ -3,25 +3,49 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import UserContext from '../../contexts/user-context'
 import { initialUserContext } from '../..'
+import logo from '../../images/bookshelf_logo.png'
 
 const StyledHeader = styled.div`
-padding: 20px;
+
+font-family: "format_1452";
+max-width: 100vw;
+display: flex;
+justify-content: space-between;
+margin: auto;
+/* background-color: #f0bcc5; */
+background-color: #d6f3ff;
+border-bottom: 1px solid #32292f;
+box-shadow: 0px 3px #32292f;
+z-index: 10;
+
+h1{
+  color: #00648d;
+  font-size: 2.5em;
+}
+
+img{
+  margin: 25px;
+  height: 75px;
+}
+nav{
+  
+}
 
 ul{
-  display: flex;
-  justify-content: space-evenly;
+  margin-right: 35px;
 }
 
 li{
   list-style: none;
-  color: #bb2200;
+  color: #32292f;
   text-decoration: none;
-
+  padding-top: 20px;
 }
 a{
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1em;
+  text-align: right;
 }
 `
 
@@ -31,10 +55,11 @@ const logoutHandler = () => {
 
 const Header = () => {
   const userContext = useContext(UserContext)
-console.log(userContext)
+// console.log(userContext)
   return (
     <StyledHeader>
-      <h1>Book Club App</h1>
+      <img src={logo} alt="bookmonster logo" />
+      <h1>Bookmonster</h1>
       <nav>
         <ul>
           {localStorage.getItem("token") === null ?
@@ -63,7 +88,6 @@ console.log(userContext)
           </Link> */}
         </ul>
       </nav>
-      <hr />
     </StyledHeader>
   )
 }

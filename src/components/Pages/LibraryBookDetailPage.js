@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from 'react'
-import { useLocation, redirect, useNavigate } from 'react-router-dom'
+import React, {useState, useContext} from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 // import { faCircle, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
@@ -69,6 +69,8 @@ const StyledBookDetail = styled.div`
 
 
 const LibraryBookDetailPage = ({state}) => {
+  const token = localStorage.getItem("token")
+  const headers = { 'token' : token }
   const userContext = useContext(UserContext)
 
   const navigate = useNavigate()
@@ -87,6 +89,7 @@ const LibraryBookDetailPage = ({state}) => {
     e.preventDefault()
     await axios({
       method: "delete",
+      headers: headers,
       url: `${API}/user/book/${userContext._id}/${data._id}`
     }).then(response => {
       if(response.status === 200){
@@ -99,6 +102,7 @@ const LibraryBookDetailPage = ({state}) => {
   const updateCurrentlyReadingState = async () => {
     await axios({
       method: "put",
+      headers: headers,
       url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newCurrentlyReading : data._id,
@@ -114,6 +118,7 @@ const LibraryBookDetailPage = ({state}) => {
   const updateUpNext = async () => {
     await axios({
       method: "put",
+      headers: headers,
       url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newUpNext: data._id,
@@ -129,6 +134,7 @@ const LibraryBookDetailPage = ({state}) => {
   const updateFinishedReading = async () => {
     await axios({
       method: "put",
+      headers: headers,
       url: `${API}/user/${userContext._id}/book-update`,
       data: {
         newFinishedReading: data._id

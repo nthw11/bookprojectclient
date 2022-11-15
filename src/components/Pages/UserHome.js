@@ -39,20 +39,24 @@ const UserHomePageWrapper = styled.div`
 
 const Home = () => {
   const userContext = useContext(UserContext)
+  const token = localStorage.getItem("token")
+  const headers = { 'token' : token }
   console.log(userContext)
   
   const [ isLoading, setLoading ] = useState(true)
-  // const [userBooks, setUserBooks] = useState('')
+
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
   let userUpNextArray = []
   const fetchUserInfo = async () => {
     const url = `${API}/user/${userContext._id}`
     const config = {
+      headers: headers,
       method: 'get',
       url
     }
     await axios(config).then((incomingUserData) => {
+      console.log(incomingUserData)
       setUserData(incomingUserData)
       setLoading(false)
       
