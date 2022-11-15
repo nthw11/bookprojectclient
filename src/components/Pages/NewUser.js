@@ -46,20 +46,19 @@ const NewUser = () => {
         lastname,
         email,
         phone,
-        avatarUrl,
         password
       },
       url: `${API}/login/register`
     }
     await axios(config).then((userData) => {
-      userContext._id = userData.data.user._id
-      userContext.username = userData.data.user.username
-      userContext.firstname = userData.data.user.firstname
-      userContext.lastname = userData.data.user.lastname
-      userContext.email = userData.data.user.email
-      userContext.phone = userData.data.user.phone
-      userContext.avatarUrl = userData.data.user.avatarUrl
-      console.log(userData.data.user)
+      console.log(userData.data)
+      userContext._id = userData.data._id
+      userContext.username = userData.data.username
+      userContext.firstname = userData.data.firstname
+      userContext.lastname = userData.data.lastname
+      userContext.email = userData.data.email
+      userContext.phone = userData.data.phone
+      console.log(userData.data)
       console.log(userContext)
       localStorage.setItem("token", userData.data.token)
     })
@@ -91,8 +90,8 @@ const NewUser = () => {
         <label>Phone</label>
         <input type="tel" placeholder='Phone Number' {...register('phone')}/>
 
-        <label>Avatar Url</label>
-        <input type="text" placeholder='Link to an image for your avatar' {...register('avatarUrl')} />
+        {/* <label>Avatar Url</label>
+        <input type="text" placeholder='Link to an image for your avatar' {...register('avatarUrl')} /> */}
 
         <label>Password</label>
         <input type="password" name='password' required placeholder='Password' {...register('password', {required: true, minLength: 4})} />

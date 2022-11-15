@@ -14,6 +14,8 @@ import NewUser from './components/Pages/NewUser';
 import ClubPage from './components/Pages/ClubPage';
 import UserContext from './contexts/user-context';
 import Login from './components/Pages/Login';
+import "./App.css";
+import "./fonts/Format_1452.woff";
 
 export const initialUserContext = {
   username: '',
