@@ -18,13 +18,12 @@ import "./App.css";
 import "./fonts/Format_1452.woff";
 
 export const initialUserContext = {
+  _id: '',
   username: '',
-      _id: '',
   firstname: '',
   lastname: '',
   email: '',
   phone: '',
-  avatarUrl: '',
   contacts:[],
   blockedContacts: [],
   clubs: [],

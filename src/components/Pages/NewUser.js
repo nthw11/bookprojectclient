@@ -52,12 +52,12 @@ const NewUser = () => {
     }
     await axios(config).then((userData) => {
       console.log(userData.data)
-      userContext._id = userData.data._id
-      userContext.username = userData.data.username
-      userContext.firstname = userData.data.firstname
-      userContext.lastname = userData.data.lastname
-      userContext.email = userData.data.email
-      userContext.phone = userData.data.phone
+      userContext._id = userData.data.user._id
+      userContext.username = userData.data.user.username
+      userContext.firstname = userData.data.user.firstname
+      userContext.lastname = userData.data.user.lastname
+      userContext.email = userData.data.user.email
+      userContext.phone = userData.data.user.phone
       console.log(userData.data)
       console.log(userContext)
       localStorage.setItem("token", userData.data.token)

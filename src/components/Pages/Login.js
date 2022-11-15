@@ -1,4 +1,4 @@
-import React,{useContext}  from 'react'
+import React, { useContext }  from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
@@ -28,23 +28,23 @@ const loginHandler = async (data) => {
   }
   await axios(config).then((userData) => {
     console.log(userData)
-    userContext._id = userData.data._id
-      userContext.username = userData.data.username
-      userContext.firstname = userData.data.firstname
-      userContext.lastname = userData.data.lastname
-      userContext.email = userData.data.email
-      userContext.phone = userData.data.phone
-      userContext.avatarUrl = userData.data.avatarUrl
-      userContext.contacts = userData.data.contacts
-      userContext.blockedContacts = userData.data.blockedContacts
-      userContext.clubs = userData.data.clubs
-      userContext.allBooks = userData.data.allBooks
-      userContext.currentlyReading = userData.data.currentlyReading
-      userContext.finishedReading = userData.data.finishedReading
-      userContext.upNext = userData.data.upNext
-      userContext.bookshelves = userData.data.bookShelves
-      userContext.tags = userData.data.tags
-      localStorage.setItem("auth-token", userData.data.token)
+      userContext._id = userData.data.user._id
+      userContext.username = userData.data.user.username
+      userContext.firstname = userData.data.user.firstname
+      userContext.lastname = userData.data.user.lastname
+      userContext.email = userData.data.user.email
+      userContext.phone = userData.data.user.phone
+      userContext.avatarUrl = userData.data.user.avatarUrl
+      userContext.contacts = userData.data.user.contacts
+      userContext.blockedContacts = userData.data.user.blockedContacts
+      userContext.clubs = userData.data.user.clubs
+      userContext.allBooks = userData.data.user.allBooks
+      userContext.currentlyReading = userData.data.user.currentlyReading
+      userContext.finishedReading = userData.data.user.finishedReading
+      userContext.upNext = userData.data.user.upNext
+      userContext.bookshelves = userData.data.user.bookShelves
+      userContext.tags = userData.data.user.tags
+      localStorage.setItem("token", userData.data.token)
     })
     return navigate("/user")
 }
