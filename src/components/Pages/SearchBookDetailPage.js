@@ -16,7 +16,8 @@ const StyledBookDetail = styled.div`
 
 const SearchBookDetailPage = (state) => {
   const userContext = useContext(UserContext)
-
+  const token = localStorage.getItem("token")
+  const headers = { 'token' : token }
   const navigate = useNavigate()
   let location = useLocation()
   const data = location.state?.book.book
@@ -25,6 +26,7 @@ const SearchBookDetailPage = (state) => {
     e.preventDefault()
     const response = await axios({
       method: "post",
+      headers: headers,
       url: `${API}/user/book/${userContext._id}/add-book`,
       data: {
         title: data.volumeInfo.title,

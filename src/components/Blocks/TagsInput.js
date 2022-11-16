@@ -50,11 +50,13 @@ const TagsInput = ({tags, user, bookId}) => {
   const [newTags, setNewTags] = useState([...tags])
   const [ tagUser ] = useState(user)
   const [ tagBookId ] = useState(bookId)
-
+  const token = localStorage.getItem("token")
+  const headers = { 'token' : token }
 
   const updateTags = async () => {
     await axios({
       method: "put",
+      headers: headers,
       url: `${API}/user/book/${tagUser}/${tagBookId}`,
       data:{
         newTags: newTags

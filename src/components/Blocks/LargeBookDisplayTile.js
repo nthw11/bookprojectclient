@@ -69,6 +69,8 @@ height: auto;
 const LargeBookDisplayTile = ({book: book}) => {
   // console.log(book)
   const userContext = useContext(UserContext)
+  const token = localStorage.getItem("token")
+  const headers = { 'token' : token }
 
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
@@ -77,6 +79,7 @@ const LargeBookDisplayTile = ({book: book}) => {
     await axios({
       method: "put",
       url: `${API}/user/${userContext._id}/book-update`,
+      headers: headers,
       data: {
         newFinishedReading: book._id,
         newCurrentlyReading: 'next'
