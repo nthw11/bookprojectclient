@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const API = process.env.REACT_APP_BACKEND_API
 
 const StyledTagsInputWrapper = styled.div`
-  border: 1px solid black;
+  
   padding: .5em;
   border-radius: 5px;
   width: min(20vw, 400px);
@@ -19,6 +19,7 @@ const StyledTagsInputWrapper = styled.div`
     background-color: #ccc;
     padding: .5em .75em;
     border-radius: 5px;
+    
     display: inline-block;
   }
 
@@ -40,7 +41,9 @@ const StyledTagsInputWrapper = styled.div`
   }
   .input{
     flex-grow: 1;
-    padding: .5em 0;
+    padding: .5em .5em;
+    border-radius: 10px;
+    height: 30px;
     border: none;
     outline: none;
   }

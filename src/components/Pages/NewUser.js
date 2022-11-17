@@ -10,20 +10,45 @@ const API = process.env.REACT_APP_BACKEND_API
 
 const StyledNewUserForm = styled.div`
 max-width: 40vw;
-margin: 20px;
+margin: 20px auto;
 border: 1px solid black;
 border-radius: 10px;
+border: none;
 padding: 20px;
+background-color: #fadec6 ;
+color: #32292f;
 
+h1{
+  font-size: 3em;
+  font-family: "format_1452";
+}
+
+label{
+  font-family: "format_1452";
+  margin-left: 2vw;
+  
+}
 
 input{
+  background-color: #e7f4ff;
+  color: #00648d;
+  font-family: 'oxygen-Light';
   display: block;
+  height: 35px;
+  margin: 10px auto;
+  padding-left: 15px;
+  width: 35vw;
+  border-radius: 10px;
+  border: none;
 }  
 
 button{
-  margin-top: 25px;
+  font-family: "oxygen-Regular";
+  margin: 25px 25px 0 25px;
   background-color: #bb2200;
   padding: 10px;
+  width: 15vw;
+  border: none;
   border-radius: 5px;
   color: white;
   font-weight: bold;
@@ -72,10 +97,10 @@ const NewUser = () => {
       <Header />
       
       <StyledNewUserForm>
-        <h1>Register new user</h1>
+        <h1>Register</h1>
       {/* <form onSubmit={createNewUserHandler}> */}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Username</label>
+        <label className='username'>Username</label>
         <input type="text" placeholder='username' {...register('username', {required: true, minLength: 4, maxLength: 20})} />
         
         <label>First Name</label>

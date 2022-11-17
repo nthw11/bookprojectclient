@@ -10,10 +10,19 @@ import UserInfo from '../Blocks/UserInfo'
 const API = process.env.REACT_APP_BACKEND_API
 
 const UserHomePageWrapper = styled.div`
-  border: 1px solid green;
+  background-color: #e6dbdb;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(3 auto);
+  font-family: 'format_1452';
+  color: #32292f;
+
+  .categoryHeader{
+    background-color: #d5c3c3;
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+  }
   .upNextWrapper{
     grid-column: 2 / 6;
     grid-row: 1;
@@ -30,7 +39,7 @@ const UserHomePageWrapper = styled.div`
     }
   .unsortedLibrary{
     margin: 15px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 10px;
     grid-column: 1 / 5;
     grid-row: 3;
@@ -88,7 +97,7 @@ const Home = () => {
     <UserHomePageWrapper>
       <div className="upNextWrapper">
       
-        <h2>Up Next</h2>
+        <h2 className='categoryHeader'>Up Next</h2>
         {userUpNextArray.length > 0 && userUpNextArray.map(book => {
           return(
             <BookDisplayTile key={book._id} book={book} />
@@ -105,7 +114,7 @@ const Home = () => {
       
       </div> */}
       <div className='unsortedLibrary'>
-        <h2>Library</h2>
+        <h2 className='categoryHeader'>Library</h2>
         { userBooksArray && userBooksArray.map(book => {
           return (
             <BookDisplayTile key={book._id} book={book} />

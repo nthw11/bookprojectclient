@@ -3,7 +3,9 @@ import { Link, history } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledSingleBook = styled.div`
-  border-top: 1px solid black;
+  background-color: #d5c3c3;
+  border-radius: 10px;
+  margin: 10px;
   
   height: 150px;
   display: flex;
@@ -13,9 +15,16 @@ const StyledSingleBook = styled.div`
     height: 150px;
     }
   button{
-    height: 75px;
+    height: 150px;
     align-self: center;
+    background-color: #de4d86;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-family: 'oxygen-Bold';
+    cursor: pointer;
   }
+
 `
 
 const BookDisplayTile = (book) => {
@@ -30,11 +39,11 @@ const BookDisplayTile = (book) => {
       <img src={singleBook.imageLink || 'https://as1.ftcdn.net/v2/jpg/01/95/35/78/1000_F_195357805_his1UjQcJqJiJohgiYnK5cwdVu8G5Ldd.jpg'} alt={singleBook.title} />
       <h3>{singleBook.title}</h3>
       <h4>{singleBook.authors[0] || 'author'}</h4>
-      <button >
         <Link to={`/user/book/${singleBook._id}`} state={{book}} >
+      <button >
           See More
-          </Link>
       </button>
+          </Link>
     </StyledSingleBook>
   )
 } else {

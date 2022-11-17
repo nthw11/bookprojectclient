@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { AvatarGenerator } from 'random-avatar-generator'
 
@@ -7,10 +8,14 @@ const StyledUserInfo = styled.div`
 width: 50vw;
 display: grid;
 grid-template-columns: 3;
-border: 2px solid red;
+background-color: #ebf9ff;
+border-radius: 10px;
+border: none;
 height: 200px;
 padding: 15px;
 margin: 15px;
+color: #32292f;
+font-family: 'oxygen-Regular';
 
 .userName{
   grid-column: 1 / 3;
@@ -25,7 +30,7 @@ img{
 
 const UserInfo = (user) => {
   const generator = new AvatarGenerator() 
-
+  
   console.log(user)
   return (
     <StyledUserInfo>

@@ -17,11 +17,16 @@ const API = process.env.REACT_APP_BACKEND_API
 const StyledBookDetail = styled.div`
   width: 80vw;
   margin-left: 10vw;
-  border: 1px solid black;
+  margin-top: 10px;
+  background-color:#fbeef1;
+  border-radius: 10px;
+  border: none;
   padding: 15px;
   display: grid;
+  color: #32292f;
+  font-family: "oxygen-Regular";
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: (25px 25px auto);
+  grid-template-rows: (25px 25px auto auto);
   .imgDiv {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -64,6 +69,33 @@ const StyledBookDetail = styled.div`
   }
   .title{
     font-style: italic;
+  }
+  button{
+    width: 200px;
+    height: 75px;
+    display: block;
+    margin: 5px;
+    align-self: center;
+    background-color: #de4d86;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-family: 'oxygen-Regular';
+    cursor: pointer;
+  }
+  .currentBookNote{
+    color: #efa9c5;
+    font-style: italic;
+    font-size: .75em;
+  }
+
+  .backToLibrary{
+    grid-column: 5 / 6;
+    grid-row: 1;
+    button{
+      background-color: #00648d;
+      font-size: 1.5em;
+    }
   }
 `
 
@@ -191,7 +223,7 @@ const LibraryBookDetailPage = ({state}) => {
       </div>
       <div className="infoDiv">
         <h3>Pages: <span className='bookInfoDetails'>{data.pageCount}</span></h3>
-        <h3>Publish Date: <span className='bookInfoDetails'>{data.publishedDate}</span></h3>
+        <h3>Publish Date: <span className='bookInfoDetails'>{data.publishedDate.slice(0, -14)}</span></h3>
       </div>
       <div className="descriptionDiv">
       <p>{data.description}</p>
@@ -229,14 +261,19 @@ const LibraryBookDetailPage = ({state}) => {
       </button >
       <button onClick={updateCurrentlyReadingState}>
         Set as Currently Reading
+      <p className='currentBookNote'>Note: this will replace {`current book`}</p>
       </button >
-      <p>Note: this will replace {`current book`}</p>
       <button onClick={updateFinishedReading}>
         Mark <span className='title'>{data.title}</span> as read
       </button>
       <button onClick={removeFromLibHandler} >
         Remove From My Library
       </button>
+      </div>
+      <div className="backToLibrary">
+        <button onClick={() => navigate(-1)}>
+          Back to My Library
+        </button>
       </div>
       </StyledBookDetail>
     </div>
