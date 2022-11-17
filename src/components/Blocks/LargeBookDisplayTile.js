@@ -7,9 +7,11 @@ import UserContext from '../../contexts/user-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 const LargeBookDisplayTileWrapper = styled.div`
-border: 1px solid black;
 border-radius: 10px;
+border: none;
+background-color: #d5c3c3;
 padding: 10px;
+margin: 5px;
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 grid-template-rows: repeat(4 auto);
@@ -96,8 +98,8 @@ const LargeBookDisplayTile = ({book: book}) => {
     <LargeBookDisplayTileWrapper>
       <h1 className='currentlyReading'>Currently Reading</h1>
       <div className="infoDiv">
-      <h2 className='title'>Title: {book.title}</h2>
-      <div className='authorDiv'><h3>By:</h3>
+      <h2 className='title'>Title- {book.title}</h2>
+      <div className='authorDiv'><h3>By-</h3>
         {book.authors && book.authors.map(author => {
         return (
             <h3 key={author}>{author}</h3>
@@ -109,11 +111,13 @@ const LargeBookDisplayTile = ({book: book}) => {
         <img src={book.imageLink} alt={book.title} />
         </div>      
       <div className="bookStats">
-        <h4>Pages: <span className='bookDetailsSpan'>{book.pageCount}</span></h4>
-        <h4>Published Date: <span className="bookDetailsSpand">{book.publishedDate}</span> </h4>
+        <h4>Pages- <span className='bookDetailsSpan'>{book.pageCount}</span></h4>
+        <h4>Published Date- <span className="bookDetailsSpan">{book.publishedDate.slice(0, -14)}</span> </h4>
       </div>
       <div className="descriptionDiv">
-      <p>{book.description ? book.description.slice(0, 400) : ''}... <span className='seeMore'><Link to={`/user/book/${book._id}`} state={book}> See More</Link></span></p>
+      <p>{book.description ? book.description.slice(0, 400) : ''}... 
+      {/* <span className='seeMore'><Link to={`/user/book/${book._id}`} state={book}> See More</Link></span> */}
+      </p>
       </div>
       <div className="buttonDiv">
         <button onClick={updateFinishedReading}>Finished Reading</button>

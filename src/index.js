@@ -16,6 +16,9 @@ import UserContext from './contexts/user-context';
 import Login from './components/Pages/Login';
 import "./App.css";
 import "./fonts/Format_1452.woff";
+import "./fonts/Oxygen-Bold.ttf"
+import "./fonts/Oxygen-Light.ttf"
+import "./fonts/Oxygen-Regular.ttf"
 
 export const initialUserContext = {
   _id: '',

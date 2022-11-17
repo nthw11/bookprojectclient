@@ -14,8 +14,6 @@ justify-content: space-between;
 margin: auto;
 /* background-color: #f0bcc5; */
 background-color: #d6f3ff;
-border-bottom: 1px solid #32292f;
-box-shadow: 0px 3px #32292f;
 z-index: 10;
 
 h1{
@@ -59,7 +57,15 @@ const Header = () => {
   return (
     <StyledHeader>
       <img src={logo} alt="bookmonster logo" />
-      <h1>Bookmonster</h1>
+          {localStorage.getItem("token") === null ?
+      <Link to={"/user/login"}>
+        <h1>Bookmonster</h1>
+      </Link>
+      :
+      <Link to={"/user"}>
+        <h1>Bookmonster</h1>
+      </Link>
+    }
       <nav>
         <ul>
           {localStorage.getItem("token") === null ?

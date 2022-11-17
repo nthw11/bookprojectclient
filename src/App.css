@@ -2,3 +2,16 @@
   font-family: 'format_1452';
   src: local('Format_1452'), url('./fonts/Format_1452.woff') format('woff');
 }
+@font-face {
+  font-family: 'oxygen-Bold';
+  src: local('Oxygen-Bold'), url('./fonts/Oxygen-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'oxygen-Light';
+  src: local('Oxygen-Light'), url('./fonts/Oxygen-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'oxygen-Regular';
+  src: local('Oxygen-Regular'),
+    url('./fonts/Oxygen-Regular.ttf') format('truetype');
+}
