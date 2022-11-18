@@ -52,6 +52,7 @@ button{
   border-radius: 5px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 `
 
@@ -61,8 +62,8 @@ const NewUser = () => {
   
   const { register, handleSubmit, watch, formState: {errors} } = useForm()
 
-  const onSubmit = async data => {
-    const {username, firstname, lastname, email, phone, avatarUrl, password} = data
+  const onSubmit = async (data) => {
+    const {username, firstname, lastname, email, phone, password} = data
     const config = {
       method: 'post',
       data: {
@@ -114,9 +115,6 @@ const NewUser = () => {
 
         <label>Phone</label>
         <input type="tel" placeholder='Phone Number' {...register('phone')}/>
-
-        {/* <label>Avatar Url</label>
-        <input type="text" placeholder='Link to an image for your avatar' {...register('avatarUrl')} /> */}
 
         <label>Password</label>
         <input type="password" name='password' required placeholder='Password' {...register('password', {required: true, minLength: 4})} />

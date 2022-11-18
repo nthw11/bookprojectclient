@@ -19,6 +19,7 @@ import "./fonts/Format_1452.woff";
 import "./fonts/Oxygen-Bold.ttf"
 import "./fonts/Oxygen-Light.ttf"
 import "./fonts/Oxygen-Regular.ttf"
+import SearchContext from './contexts/search-context';
 
 export const initialUserContext = {
   _id: '',
@@ -37,12 +38,17 @@ export const initialUserContext = {
   bookshelves: [],
   tags: []
 }
+export const initialSearchContext = {
+  searchTerm: '', 
+  startingPage:0
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
       <UserContext.Provider value={ initialUserContext }>
+      <SearchContext.Provider value={ initialSearchContext}>
     <BrowserRouter>
     <Routes >
       <Route path='/' element={<Home />} />
@@ -54,8 +60,10 @@ root.render(
       <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
       <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
       <Route path='/clubs/:clubId' element={<ClubPage />} />
+
     </Routes>
     </BrowserRouter>
+    </SearchContext.Provider>
       </UserContext.Provider>
   </React.StrictMode>
 );

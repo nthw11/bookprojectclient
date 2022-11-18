@@ -9,8 +9,59 @@ const API = process.env.REACT_APP_BACKEND_API
 const StyledBookDetail = styled.div`
   width: 80vw;
   margin-left: 10vw;
-  border: 1px solid black;
+  border-radius: 10px;
+  background: #fbeef1;
+  margin-top:  10px;
+  border: none;
   padding: 15px;
+  color: #32292f;
+  font-family: "oxygen-Regular";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: (25px 25px auto auto);
+
+  .imgDiv {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  
+  }
+  .authorTitleDiv{
+    display: inline-grid;
+  }
+  .titleDiv {
+  
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+  .authorDiv {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+  .descriptionDiv {
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+
+
+  button{
+    width: 200px;
+    height: 75px;
+    display: block;
+    margin: 5px;
+    align-self: center;
+    background-color: #de4d86;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-family: 'oxygen-Regular';
+    cursor: pointer;
+  }
+  .backToLibrary{
+    button{
+
+      background: #00648d;
+      font-size: 1.5em;
+    }
+  }
 `
 
 
@@ -21,7 +72,8 @@ const SearchBookDetailPage = (state) => {
   const navigate = useNavigate()
   let location = useLocation()
   const data = location.state?.book.book
-  // console.log('book data', data)
+  
+  console.log('book data', data)
   const addBookToLibHandler = async (e) => {
     e.preventDefault()
     const response = await axios({
@@ -47,6 +99,9 @@ const SearchBookDetailPage = (state) => {
     })
     
   }
+  const goBackToSearchHandler = () => {
+    navigate('/search')
+  }
 
   // console.log(state)
   if (data){
@@ -55,15 +110,37 @@ const SearchBookDetailPage = (state) => {
       <div>
       <Header />
       <StyledBookDetail>
-
-      <h1>Book Detail Page</h1>
+      <div className="imgDiv">
+      <img src={data.volumeInfo.imageLinks.thumbnail} alt={data.title} />
+      </div>
+      <div className="authorTitleDiv">
+      <div className="titleDiv">
       <h2>{data.volumeInfo.title}</h2>
+      </div>
+      <div className="authorDiv">
+      <h3>{data.volumeInfo.authors[0]}</h3>
+      </div>
+      </div>
+      <div className="infoDiv">
+        <h3>Pages: <span className='bookInfoDetails'>{data.volumeInfo.pageCount}</span></h3>
+        <h3>Published: <span className='bookInfoDetails'>{data.volumeInfo.publishedDate}</span></h3>
+      </div>
+      <div className="descriptionDiv">
+      <p>{data.volumeInfo.description}</p>
+      </div>
+
+      {/* <h2>{data.volumeInfo.title}</h2>
       <h3>{data.volumeInfo.authors[0]}</h3>
       <img src={data.volumeInfo.imageLinks.thumbnail} alt={data.volumeInfo.title} />
-      <p>{data.volumeInfo.description}</p>
+      <p>{data.volumeInfo.description}</p> */}
       <button onClick={addBookToLibHandler} >
         Add Book To My Library
       </button>
+      <div className="backToLibrary">
+        <button onClick={goBackToSearchHandler}>
+          Back to Search Results
+        </button>
+      </div>
       </StyledBookDetail>
     </div>
   )
