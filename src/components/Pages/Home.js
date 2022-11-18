@@ -3,7 +3,6 @@ import UserContext from '../../contexts/user-context'
 import Header from '../Blocks/Header'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { initialUserContext } from '../..'
 import logo from '../../images/bookshelf_logo.png'
 const StyledHome = styled.div`
   font-family: "format_1452";
@@ -35,16 +34,14 @@ const Home = () => {
   let userContext = useContext(UserContext)
   userContext = {}
 
-
-  console.log(userContext)
   return (
     <div>
       <Header />
       <StyledHome>
         <div className='centerDiv'>
+          <Link to={"/user/login"}>
           <img src={logo} alt="" />
           <h1>Welcome to Bookmonster</h1>
-          <Link to={"/user/login"}>
           <h3>Log in to get started</h3>
           </Link>
         </div>

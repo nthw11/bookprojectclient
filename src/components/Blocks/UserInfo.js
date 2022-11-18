@@ -30,8 +30,7 @@ img{
 
 const UserInfo = (user) => {
   const generator = new AvatarGenerator() 
-  
-  console.log(user)
+
   return (
     <StyledUserInfo>
       <div className="userName">

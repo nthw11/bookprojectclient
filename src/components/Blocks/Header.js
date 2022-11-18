@@ -1,9 +1,10 @@
-import React, {useContext} from 'react'
-import { Link } from 'react-router-dom'
+import React, {useContext, useEffect} from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import UserContext from '../../contexts/user-context'
-import { initialUserContext } from '../..'
+import { initialSearchContext, initialUserContext } from '../..'
 import logo from '../../images/bookshelf_logo.png'
+import SearchContext from '../../contexts/search-context'
 
 const StyledHeader = styled.div`
 
@@ -46,17 +47,26 @@ a{
   text-align: right;
 }
 `
+const Header = () => {
+  const searchContext = useContext(SearchContext)
+  const navigate = useNavigate()
+
 
 const logoutHandler = () => {
   localStorage.removeItem("token")
 }
+const searchClickHandler = () => {
+  searchContext.searchTerm = ''
+  searchContext.startingPage = 0
+  // SearchContext = initialSearchContext
+}
 
-const Header = () => {
-  const userContext = useContext(UserContext)
 // console.log(userContext)
   return (
     <StyledHeader>
+      <Link to={"/"}>
       <img src={logo} alt="bookmonster logo" />
+      </Link>
           {localStorage.getItem("token") === null ?
       <Link to={"/user/login"}>
         <h1>Bookmonster</h1>
@@ -84,7 +94,8 @@ const Header = () => {
             Log Out
             </li>
           </Link>
-          <Link to={"/search"}>
+          {/* onClick={searchClickHandler} */}
+          <Link to={"/search"} onClick={searchClickHandler} >
           <li>Search Books</li>
           </Link>
           </div>

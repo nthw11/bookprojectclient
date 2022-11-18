@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import Header from '../Blocks/Header'
 import styled from 'styled-components'
@@ -52,6 +52,16 @@ button{
   border-radius: 5px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+}
+.or{
+  font-family: "oxygen-Bold";
+  font-style: italic;
+  margin-left: 150px;
+}
+.loginOption {
+  background-color: #00648d;
+  
 }
 `
 
@@ -61,8 +71,8 @@ const NewUser = () => {
   
   const { register, handleSubmit, watch, formState: {errors} } = useForm()
 
-  const onSubmit = async data => {
-    const {username, firstname, lastname, email, phone, avatarUrl, password} = data
+  const onSubmit = async (data) => {
+    const {username, firstname, lastname, email, phone, password} = data
     const config = {
       method: 'post',
       data: {
@@ -115,15 +125,16 @@ const NewUser = () => {
         <label>Phone</label>
         <input type="tel" placeholder='Phone Number' {...register('phone')}/>
 
-        {/* <label>Avatar Url</label>
-        <input type="text" placeholder='Link to an image for your avatar' {...register('avatarUrl')} /> */}
-
         <label>Password</label>
         <input type="password" name='password' required placeholder='Password' {...register('password', {required: true, minLength: 4})} />
         
         <button value="submit" type="submit">Create New User</button>
 
       </form>
+      <p className='or'>- or -</p>
+      <Link to={"/user/login"}>
+        <button className='loginOption'>Log In</button>
+      </Link>
       </StyledNewUserForm>
     </div>
   )

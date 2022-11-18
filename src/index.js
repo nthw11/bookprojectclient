@@ -19,6 +19,7 @@ import "./fonts/Format_1452.woff";
 import "./fonts/Oxygen-Bold.ttf"
 import "./fonts/Oxygen-Light.ttf"
 import "./fonts/Oxygen-Regular.ttf"
+import SearchContext from './contexts/search-context';
 
 export const initialUserContext = {
   _id: '',
@@ -37,26 +38,31 @@ export const initialUserContext = {
   bookshelves: [],
   tags: []
 }
+export const initialSearchContext = {
+  searchTerm: '', 
+  startingPage:0
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
-      <UserContext.Provider value={ initialUserContext }>
+    <SearchContext.Provider value={ initialSearchContext}>
+  <UserContext.Provider value={ initialUserContext }>
     <BrowserRouter>
-    <Routes >
-      <Route path='/' element={<Home />} />
-      <Route path='/user' element={<UserHome />} />
-      <Route path='/user/login' element={<Login />} />
-      <Route path='/user/new-user' element={<NewUser />} />
-      <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
-      <Route path='/search' element={<SearchPage /> } />
-      <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
-      <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
-      <Route path='/clubs/:clubId' element={<ClubPage />} />
-    </Routes>
-    </BrowserRouter>
-      </UserContext.Provider>
+      <Routes >
+          <Route path='/' element={<Home />} />
+          <Route path='/user' element={<UserHome />} />
+          <Route path='/user/login' element={<Login />} />
+          <Route path='/user/new-user' element={<NewUser />} />
+          <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
+          <Route path='/search' element={<SearchPage /> } />
+          <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
+          <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
+          <Route path='/clubs/:clubId' element={<ClubPage />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
+    </SearchContext.Provider>
   </React.StrictMode>
 );
 
