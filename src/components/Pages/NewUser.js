@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import Header from '../Blocks/Header'
 import styled from 'styled-components'
@@ -53,6 +53,15 @@ button{
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+.or{
+  font-family: "oxygen-Bold";
+  font-style: italic;
+  margin-left: 150px;
+}
+.loginOption {
+  background-color: #00648d;
+  
 }
 `
 
@@ -122,6 +131,10 @@ const NewUser = () => {
         <button value="submit" type="submit">Create New User</button>
 
       </form>
+      <p className='or'>- or -</p>
+      <Link to={"/user/login"}>
+        <button className='loginOption'>Log In</button>
+      </Link>
       </StyledNewUserForm>
     </div>
   )

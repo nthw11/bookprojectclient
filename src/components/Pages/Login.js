@@ -3,7 +3,7 @@ import Header from '../Blocks/Header'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../contexts/user-context'
 
 const API = process.env.REACT_APP_BACKEND_API
@@ -52,6 +52,16 @@ button{
   border-radius: 5px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+  
+}
+.or{
+  font-family: "oxygen-Bold";
+  font-style: italic;
+  margin-left: 150px;
+}
+.registerOption{
+  background-color: #00648d;
 }
 `
 
@@ -70,7 +80,20 @@ const loginHandler = async (data) => {
     }, 
     url: `${API}/login`
   }
-  await axios(config).then((userData) => {
+  await axios(config)
+  .catch(function (error) {
+    if(error.response){
+      console.log(error.response)
+      const errorMsg = error.response.data
+      alert(errorMsg)
+    } else if (error.request) {
+      console.log(error.request)
+    } else {
+      console.log(error.message)
+    }
+  })
+  .then((userData) => {
+     
     console.log(userData)
       userContext._id = userData.data.user._id
       userContext.username = userData.data.user.username
@@ -106,6 +129,10 @@ const loginHandler = async (data) => {
         <input type="password" placeholder='password' {...register('password', {required: true})} />
         <button value='submit' type='submit'>Login</button>
       </form>
+      <p className='or'>-or-</p>
+      <Link to={"/user/new-user"}>
+      <button className='registerOption'>Register</button>
+      </Link>
     </StyledLoginForm>
     </div>
   )

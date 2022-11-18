@@ -67,13 +67,12 @@ const StyledBookDetail = styled.div`
 
 const SearchBookDetailPage = (state) => {
   const userContext = useContext(UserContext)
+  console.log(userContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const navigate = useNavigate()
   let location = useLocation()
   const data = location.state?.book.book
-  
-  console.log('book data', data)
   const addBookToLibHandler = async (e) => {
     e.preventDefault()
     const response = await axios({
