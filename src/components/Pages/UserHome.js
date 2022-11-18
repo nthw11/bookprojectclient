@@ -7,7 +7,40 @@ import LargeBookDisplayTile from '../Blocks/LargeBookDisplayTile'
 import BookshelvesBar from '../Blocks/BookshelvesBar'
 import UserContext from '../../contexts/user-context'
 import UserInfo from '../Blocks/UserInfo'
+import bookshelf_logo from '../../images/bookshelf_logo.png'
 const API = process.env.REACT_APP_BACKEND_API
+
+const StyledLoading = styled.div`
+
+.fullPage{
+    background-color: #e6dbdb;
+    height: 100vh;
+  }
+  h3{
+    font-family: "format_1452";
+    font-size: 3em;
+    color: #00648d;
+    text-align: center;
+  }
+  .spinner{
+    position: absolute;
+    top: 40vh;
+    left: calc(50vw - 150px);
+    margin: auto;
+    img{
+      max-height: 250px;
+    }
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+    }
+    animation: rotation 3s infinite linear;
+  }
+`
 
 const UserHomePageWrapper = styled.div`
   background-color: #e6dbdb;
@@ -64,7 +97,6 @@ const Home = () => {
     await axios(config).then((incomingUserData) => {
       setUserData(incomingUserData)
       setLoading(false)
-      
     })
     
   }
@@ -76,10 +108,18 @@ const Home = () => {
   
   if(isLoading){
     return(
-      <div>
+      <>
         <Header />
-        <h2>...Loading{console.log('loading')} </h2>
-      </div>
+        <StyledLoading>
+        <div className="fullPage">
+          <h3>please wait</h3>
+          <div className="spinner">
+          <img src={bookshelf_logo} alt="loading" />
+          </div>
+          <h3>loading</h3>
+        </div>
+      </StyledLoading>
+      </>
     )
   } 
   userBooksArray = userData.data.allBooks
