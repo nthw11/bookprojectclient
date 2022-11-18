@@ -27,6 +27,9 @@ const StyledBookDetail = styled.div`
   font-family: "oxygen-Regular";
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: (25px 25px auto auto);
+  h3{
+    font-size: .85em;
+  }
   .imgDiv {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -64,7 +67,6 @@ const StyledBookDetail = styled.div`
     grid-row: 3;
   }
   .bookInfoDetails{
-    font-size: .95em;
     color: #333;
   }
   .title{
@@ -109,7 +111,7 @@ const LibraryBookDetailPage = ({state}) => {
   let location = useLocation()
   
   const data = location.state?.book.book 
-  console.log(data)
+  console.log(userContext)
   
   const [rating, setRating] = useState(data.userRating)
   const [newCurrentlyReading, setNewCurrentlyReading] = useState()
@@ -140,7 +142,6 @@ const LibraryBookDetailPage = ({state}) => {
         newCurrentlyReading : data._id,
       }
     }).then(response => {
-      console.log(response)
       if(response.status === 200){
         return navigate('/user')
       }
@@ -156,7 +157,6 @@ const LibraryBookDetailPage = ({state}) => {
         newUpNext: data._id,
       }
     }).then(response => {
-      console.log(response)
       if(response.status === 200){
         return navigate('/user')
       }
@@ -172,7 +172,6 @@ const LibraryBookDetailPage = ({state}) => {
         newFinishedReading: data._id
       }
     }).then(response => {
-      console.log(response)
       if(response.status === 200){
         return navigate('/user')
       }
