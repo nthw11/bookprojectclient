@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Link, history } from 'react-router-dom'
 import styled from 'styled-components'
+import logo from '../../images/bookshelf_logo.png'
 
 const StyledSingleBook = styled.div`
   .link{
@@ -43,7 +44,7 @@ const StyledSingleBook = styled.div`
 
 const BookSearchTile = (book) => {
   const singleBook = book.book
-  
+  console.log(singleBook)
   const singleBookClickHandler = (singleBook) => {
     singleBook.history.push(`book/${singleBook.id}`)
   }
@@ -54,13 +55,14 @@ const BookSearchTile = (book) => {
       
       <StyledSingleBook key={singleBook.id}>
         <Link to={`/search/book/${singleBook.id}`} state={{book}} className="link">
-      <img src={singleBook.volumeInfo.imageLinks.thumbnail || 'https://as1.ftcdn.net/v2/jpg/01/95/35/78/1000_F_195357805_his1UjQcJqJiJohgiYnK5cwdVu8G5Ldd.jpg'} alt={singleBook.volumeInfo.title} />
+      <img src={singleBook.volumeInfo.imageLinks ? singleBook.volumeInfo.imageLinks.thumbnail : logo} alt={singleBook.volumeInfo.title} />
+      
       <div className="titleAuthor">
 
       <h3 className='title'>{singleBook.volumeInfo.title}</h3>
       <h4 className='author'>By: {singleBook.volumeInfo.authors[0] || 'author'}</h4>
       </div>
-      <p className='description'>{singleBook.volumeInfo.description.slice(0, 2000)}</p>
+      <p className='description'>{singleBook.volumeInfo.description ? singleBook.volumeInfo.description.slice(0, 2000) : ''}</p>
       
         </Link>
     </StyledSingleBook>

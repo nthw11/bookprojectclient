@@ -39,7 +39,6 @@ const UserHomePageWrapper = styled.div`
     }
   .unsortedLibrary{
     margin: 15px;
-    /* border: 1px solid black; */
     border-radius: 10px;
     grid-column: 1 / 5;
     grid-row: 3;
@@ -50,8 +49,6 @@ const Home = () => {
   const userContext = useContext(UserContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
-  console.log(userContext)
-  
   const [ isLoading, setLoading ] = useState(true)
 
   const [ userData, setUserData ] = useState('')
@@ -65,12 +62,11 @@ const Home = () => {
       url
     }
     await axios(config).then((incomingUserData) => {
-      console.log(incomingUserData)
       setUserData(incomingUserData)
       setLoading(false)
       
     })
-    console.log(userData)
+    
   }
 
   useEffect(()=> {

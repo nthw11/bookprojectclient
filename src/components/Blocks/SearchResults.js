@@ -17,20 +17,6 @@ const StyledSearchResults = styled.div`
 
 const SearchResults = (books) => {
   const bookSearchArray = books.books
-  const searchContext = useContext(SearchContext)
-  const searchTerm = searchContext.searchTerm
-  const startingPage = searchContext.startingPage
-
-  const pagBackHandler = async () => {
-
-  }
-
-  const pagNextHandler = async () => {
-    startingPage += 10
-    const response = await axios.get(`${API_SEARCH_URL}${searchTerm}&startIndex=${startingPage}&key=${GOOGLE_BOOKS_KEY}`)
-
-    
-  }
   
   return (
     <StyledSearchResults>
@@ -46,10 +32,7 @@ const SearchResults = (books) => {
           )
         })
       }
-    <div className="paginate">
-      <button className="pagBack" onClick={pagBackHandler}>Previous 10 Results</button>
-      <button className="pagNext" onClick={pagNextHandler}>Next 10 Results</button>
-    </div>
+
     </StyledSearchResults>
   )
 }

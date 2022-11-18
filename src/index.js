@@ -46,25 +46,23 @@ export const initialSearchContext = {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
-      <UserContext.Provider value={ initialUserContext }>
-      <SearchContext.Provider value={ initialSearchContext}>
+    <SearchContext.Provider value={ initialSearchContext}>
+  <UserContext.Provider value={ initialUserContext }>
     <BrowserRouter>
-    <Routes >
-      <Route path='/' element={<Home />} />
-      <Route path='/user' element={<UserHome />} />
-      <Route path='/user/login' element={<Login />} />
-      <Route path='/user/new-user' element={<NewUser />} />
-      <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
-      <Route path='/search' element={<SearchPage /> } />
-      <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
-      <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
-      <Route path='/clubs/:clubId' element={<ClubPage />} />
-
-    </Routes>
-    </BrowserRouter>
+      <Routes >
+          <Route path='/' element={<Home />} />
+          <Route path='/user' element={<UserHome />} />
+          <Route path='/user/login' element={<Login />} />
+          <Route path='/user/new-user' element={<NewUser />} />
+          <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
+          <Route path='/search' element={<SearchPage /> } />
+          <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
+          <Route path='/search/club/:clubId' element={<SearchClubDetailPage />} />
+          <Route path='/clubs/:clubId' element={<ClubPage />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
     </SearchContext.Provider>
-      </UserContext.Provider>
   </React.StrictMode>
 );
 
