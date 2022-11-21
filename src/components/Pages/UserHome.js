@@ -15,6 +15,7 @@ const StyledLoading = styled.div`
 .fullPage{
     background-color: #e6dbdb;
     height: 100vh;
+    z-index: 1;
   }
   h3{
     font-family: "format_1452";
@@ -80,6 +81,7 @@ const UserHomePageWrapper = styled.div`
 
 const Home = () => {
   const userContext = useContext(UserContext)
+  console.log(userContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const [ isLoading, setLoading ] = useState(true)

@@ -98,8 +98,8 @@ const LargeBookDisplayTile = ({book: book}) => {
     <LargeBookDisplayTileWrapper>
       <h1 className='currentlyReading'>Currently Reading</h1>
       <div className="infoDiv">
-      <h2 className='title'>Title- {book.title}</h2>
-      <div className='authorDiv'><h3>By-</h3>
+      <h2 title='Book Title' className='title'>{book.title}</h2>
+      <div title='Authors' className='authorDiv'>
         {book.authors && book.authors.map(author => {
         return (
             <h3 key={author}>{author}</h3>
