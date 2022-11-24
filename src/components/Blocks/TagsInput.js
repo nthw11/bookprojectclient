@@ -76,10 +76,7 @@ const TagsInput = ({tags, user, bookId}) => {
     if(e.key !== 'Enter') return
     const value = e.target.value
     if(!value.trim()) return
-    console.log(newTags)
     setNewTags([...newTags, value])
-    console.log(value)
-    console.log(newTags)
     updateTags()
     e.target.value = ''
   }

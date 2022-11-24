@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { AvatarGenerator } from 'random-avatar-generator'
 import {MdSettingsApplications} from 'react-icons/md'
-import UserUpdateModal from './UserUpdateModal'
 
 const StyledUserInfo = styled.div`
 max-width: 80vw;
@@ -13,7 +12,7 @@ grid-template-rows: 2;
 background-color: #ebf9ff;
 border-radius: 10px;
 border: none;
-height: 150px;
+height: auto;
 padding: 15px 10vw;
 margin: 15px;
 color: #32292f;
@@ -43,17 +42,19 @@ img{
 `
 
 const UserInfo = (user) => {
-  const [openModal, setOpenModal ] = useState(false)
+
   const generator = new AvatarGenerator() 
+  const navigate = useNavigate()
 
   const updateUserInfoHandler = () => {
-    setOpenModal(prev => !prev)
+    // setOpenModal(prev => !prev)
+    navigate('/user/update-user')
   }
   
 
   return (
     <>
-      <UserUpdateModal openModal={openModal} setOpenModal={setOpenModal} />
+
     <StyledUserInfo>
       <MdSettingsApplications className='settings' title="Edit user info"  onClick={updateUserInfoHandler} />
       <div className="userName">

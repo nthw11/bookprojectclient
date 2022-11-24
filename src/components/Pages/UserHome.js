@@ -8,6 +8,7 @@ import BookshelvesBar from '../Blocks/BookshelvesBar'
 import UserContext from '../../contexts/user-context'
 import UserInfo from '../Blocks/UserInfo'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
+import MiniBookDisplayTile from '../Blocks/MiniBookDisplayTile'
 const API = process.env.REACT_APP_BACKEND_API
 
 const StyledLoading = styled.div`
@@ -53,11 +54,12 @@ const UserHomePageWrapper = styled.div`
 
   .categoryHeader{
     background-color: #d5c3c3;
-    height: 40px;
-    padding: 5px;
+    max-height: 40px;
+    padding: 15px;
     border-radius: 10px;
   }
   .upNextWrapper{
+    margin: 15px;
     grid-column: 2 / 6;
     grid-row: 1;
   }
@@ -77,11 +79,15 @@ const UserHomePageWrapper = styled.div`
     grid-column: 1 / 5;
     grid-row: 3;
   }
+  .finishedReading{
+    margin: 15px;
+    grid-column: 6 / 11;
+    grid-row: 3;
+  }
 `
 
 const Home = () => {
   const userContext = useContext(UserContext)
-  console.log(userContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const [ isLoading, setLoading ] = useState(true)
@@ -89,6 +95,7 @@ const Home = () => {
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
   let userUpNextArray = []
+  
   const fetchUserInfo = async () => {
     const url = `${API}/user/${userContext._id}`
     const config = {
@@ -102,7 +109,7 @@ const Home = () => {
     })
     
   }
-
+  
   useEffect(()=> {
     // fetchUserBooks()
     fetchUserInfo()
@@ -126,7 +133,9 @@ const Home = () => {
   } 
   userBooksArray = userData.data.allBooks
   userUpNextArray = userData.data.upNext
-  
+  // userFinishedArray = userData.data.finishedReading
+  console.log(userData.data)
+    
   return (
     <>
       <Header />
@@ -154,9 +163,23 @@ const Home = () => {
       <div className='unsortedLibrary'>
         <h2 className='categoryHeader'>Library</h2>
         { userBooksArray && userBooksArray.map(book => {
-          return (
-            <BookDisplayTile key={book._id} book={book} />
-          )
+          if(!book.tags.includes("Read")){
+
+            return (
+              <BookDisplayTile key={book._id} book={book} />
+              )
+            }  
+        })}
+      </div>
+      <div className="finishedReading">
+        <h2 className="categoryHeader">Finished Reading</h2>
+        { userBooksArray.map(book => {
+          if(book.tags.includes("Read")){
+
+            return (
+              <MiniBookDisplayTile key={book._id} book={book} />
+              )
+            }
         })}
       </div>
     </UserHomePageWrapper>

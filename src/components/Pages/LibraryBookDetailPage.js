@@ -99,6 +99,18 @@ const StyledBookDetail = styled.div`
       font-size: 1.5em;
     }
   }
+  .unread{
+    background: #00648d;
+  }
+  #starSelect{
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: #00648d;
+    color: #fff;
+    font-size: 2em;
+  }
 `
 
 
@@ -118,6 +130,14 @@ const LibraryBookDetailPage = ({state}) => {
   const [newFinishedReading, setNewFinishedReading] = useState()
   const [newUpNext, setNewUpNext] = useState()
 
+
+  const ratingUpdateHandler = (e) =>{
+    e.preventDefault()
+    console.log(data.userRating)
+    const strRating = e.target[1].value
+    console.log(strRating)
+    return toString(strRating)
+  }
 
   const removeFromLibHandler = async (e) => {
     e.preventDefault()
@@ -178,18 +198,34 @@ const LibraryBookDetailPage = ({state}) => {
     })
   }  
   
-  const editBookHandler = async (e) => {
-    e.preventDefault()
-    const response = await axios({
+  const updateOutOfFinishedReading = async () => {
+    await axios({
       method: "put",
+      headers: headers,
+      url: `${API}/user/${userContext._id}/book-update`,
+      data: {
+        outOfFinishedReading: data._id
+      }
+    }).then(response => {
+      if(response.status === 200){
+        return navigate('/user')
+      }
+    })
+  }  
+  
+  const editBookHandler = async (e) => {
+    console.log(e.target[1].value)
+    const newUserRating = (+e.target[1].value)
+    e.preventDefault()
+    await axios({
+      method: "put",
+      headers: headers,
       url: `${API}/user/book/${userContext._id}/${data._id}`,
-      // data: {
-      // newUserRating,
+      data: {
+      newUserRating,
       // newCategories,
-      // newImageLink,
-      // newTags,
       // newNotes,
-      // }
+      }
     }).then(response => {
       if(response.status === 200){
         return (
@@ -203,6 +239,7 @@ const LibraryBookDetailPage = ({state}) => {
 
   // console.log(state)
   if (data){
+    // console.log(data)
 
     return (
       <div>
@@ -230,21 +267,19 @@ const LibraryBookDetailPage = ({state}) => {
       <div className='ratingDiv'>
         <h4>Rating:</h4>
         <div className="stars">
-        <label>
-          <input type="radio" name='rating' value={1}/>
-          </label>
-        <label>
-          <input type="radio" name='rating' value={2}/>
-          </label>
-        <label>
-          <input type="radio" name='rating' value={3}/>
-          </label>
-        <label>
-          <input type="radio" name='rating' value={4}/>
-          </label>
-        <label>
-          <input type="radio" name='rating' value={5}/>
-          </label>
+          <form id='starForm' onSubmit={editBookHandler}>
+          <button type='submit'>Submit</button>
+        <label htmlFor="stars" >
+          <select name="stars" id="starSelect" form='starForm' onChange={ratingUpdateHandler}>
+            <option value="0">No Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+          </form>
         </div>
         {/* <FontAwesomeIcon icon={faCircle} /> */}
         {/* <FontAwesomeIcon icon={faCircleHalfStroke} /> */}
@@ -262,9 +297,21 @@ const LibraryBookDetailPage = ({state}) => {
         Set as Currently Reading
       <p className='currentBookNote'>Note: this will replace {`current book`}</p>
       </button >
-      <button onClick={updateFinishedReading}>
+
+      {
+        data.tags.includes("Read") ? 
+        <button className='unread' onClick={updateOutOfFinishedReading}>
+        Mark <span className='title'>{data.title}</span> as unread
+      </button>
+      :
+        <button className='read' onClick={updateFinishedReading}>
         Mark <span className='title'>{data.title}</span> as read
       </button>
+      
+      }
+      
+    
+
       <button onClick={removeFromLibHandler} >
         Remove From My Library
       </button>
