@@ -58,7 +58,7 @@ const logoutHandler = () => {
 const searchClickHandler = () => {
   searchContext.searchTerm = ''
   searchContext.startingPage = 0
-  // SearchContext = initialSearchContext
+  
 }
 
 // console.log(userContext)

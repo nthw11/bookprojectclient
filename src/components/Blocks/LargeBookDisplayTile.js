@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { format } from 'date-fns'
 import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../contexts/user-context'
+import SearchContext from '../../contexts/search-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 const LargeBookDisplayTileWrapper = styled.div`
@@ -64,16 +65,30 @@ height: auto;
   grid-column: 1 / 2;
   grid-row: 3;
 }
+button{
+    width: 200px;
+    height: 75px;
+    display: block;
+    margin: 5px;
+    align-self: center;
+    background-color: #de4d86;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-family: 'oxygen-Regular';
+    cursor: pointer;
+  }
 `
+
+const StyledNoBookDiv = styled.div``
 
 
 
 const LargeBookDisplayTile = ({book: book}) => {
-  // console.log(book)
   const userContext = useContext(UserContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
-
+  const searchContext = useContext(SearchContext)
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
 
@@ -87,25 +102,34 @@ const LargeBookDisplayTile = ({book: book}) => {
         newCurrentlyReading: 'next'
       }
     }).then(response => {
-      console.log(response)
       if(response.status === 200){
-        return navigate('/user')
+        // return navigate('/user')
+        setNewFinishedReading(response.data.finishedReading)
+        searchContext.finishedReading = newFinishedReading
       }
     })
+    navigate('/user')
   }  
+  const searchClickHandler = () => {
+    searchContext.searchTerm = ''
+    searchContext.startingPage = 0
+    
+  }
 
-  return (
-    <LargeBookDisplayTileWrapper>
+  if(book){
+    
+    return (
+      <LargeBookDisplayTileWrapper>
       <h1 className='currentlyReading'>Currently Reading</h1>
       <div className="infoDiv">
-      <h2 className='title'>Title- {book.title}</h2>
-      <div className='authorDiv'><h3>By-</h3>
+      <h2 title='Book Title' className='title'>{book.title}</h2>
+      <div title='Authors' className='authorDiv'>
         {book.authors && book.authors.map(author => {
-        return (
+          return (
             <h3 key={author}>{author}</h3>
-        )
-      }
-      ) } </div>
+            )
+          }
+          ) } </div>
       </div>
       <div className="coverImg">
         <img src={book.imageLink} alt={book.title} />
@@ -125,6 +149,16 @@ const LargeBookDisplayTile = ({book: book}) => {
 
     </LargeBookDisplayTileWrapper>
   )
+} else {
+  return (
+    <StyledNoBookDiv>
+      <h3>It looks like you aren't currently reading anything</h3>
+      <Link to={"/search"} onClick={searchClickHandler}>Find a new book to read!</Link>
+    </StyledNoBookDiv>
+  )
+}
+
+
 }
 
 export default LargeBookDisplayTile

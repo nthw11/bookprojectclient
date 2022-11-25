@@ -20,6 +20,7 @@ import "./fonts/Oxygen-Bold.ttf"
 import "./fonts/Oxygen-Light.ttf"
 import "./fonts/Oxygen-Regular.ttf"
 import SearchContext from './contexts/search-context';
+import EditUser from './components/Pages/EditUser';
 
 export const initialUserContext = {
   _id: '',
@@ -54,6 +55,7 @@ root.render(
           <Route path='/user' element={<UserHome />} />
           <Route path='/user/login' element={<Login />} />
           <Route path='/user/new-user' element={<NewUser />} />
+          <Route path='/user/update-user' element={<EditUser />} />
           <Route path='/user/book/:bookId' element={<LibraryBookDetailPage />} />
           <Route path='/search' element={<SearchPage /> } />
           <Route path='/search/book/:bookId' element={<SearchBookDetailPage />} />
