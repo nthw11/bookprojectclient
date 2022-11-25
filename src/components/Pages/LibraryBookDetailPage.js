@@ -111,6 +111,9 @@ const StyledBookDetail = styled.div`
     color: #fff;
     font-size: 2em;
   }
+  .firstOption{
+    color: #00648d;
+  }
 `
 
 
@@ -133,10 +136,10 @@ const LibraryBookDetailPage = ({state}) => {
 
   const ratingUpdateHandler = (e) =>{
     e.preventDefault()
-    console.log(data.userRating)
     const strRating = e.target[1].value
-    console.log(strRating)
-    return toString(strRating)
+    setRating(strRating)
+    // console.log(rating)
+
   }
 
   const removeFromLibHandler = async (e) => {
@@ -270,8 +273,8 @@ const LibraryBookDetailPage = ({state}) => {
           <form id='starForm' onSubmit={editBookHandler}>
           <button type='submit'>Submit</button>
         <label htmlFor="stars" >
-          <select name="stars" id="starSelect" form='starForm' onChange={ratingUpdateHandler}>
-            <option value="0">No Rating</option>
+          <select name="stars" id="starSelect" form='starForm' >
+            <option className='firstOption' value="0">{rating}</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
