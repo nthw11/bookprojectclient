@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../contexts/user-context'
 import SearchContext from '../../contexts/search-context'
+import SingleBookContext from '../../contexts/singleBook-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 const LargeBookDisplayTileWrapper = styled.div`
@@ -82,16 +83,14 @@ button{
 
 const StyledNoBookDiv = styled.div``
 
-
-
-const LargeBookDisplayTile = ({book: book}) => {
+  const LargeBookDisplayTile = ({book: book}) => {
   const userContext = useContext(UserContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const searchContext = useContext(SearchContext)
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
-
+  const singleBookContext = useContext(SingleBookContext)
   const updateFinishedReading = async () => {
     await axios({
       method: "put",
@@ -114,6 +113,20 @@ const LargeBookDisplayTile = ({book: book}) => {
     searchContext.searchTerm = ''
     searchContext.startingPage = 0
     
+  }
+  const moreInfoHandler = () => {
+    singleBookContext.id = book._id
+    singleBookContext.title = book.title
+    singleBookContext.subtitle = book.subtitle
+    singleBookContext.authors = book.authors
+    singleBookContext.pageCount = book.pageCount
+    singleBookContext.publishedDate = book.publishedDate
+    singleBookContext.imageLink = book.imageLink
+    singleBookContext.description = book.description
+    singleBookContext.userRating = book.userRating
+    singleBookContext.tags = book.tags
+    singleBookContext.notes = book.notes
+    navigate(`/user/book/${book._id}`)
   }
 
   if(book){
@@ -145,6 +158,7 @@ const LargeBookDisplayTile = ({book: book}) => {
       </div>
       <div className="buttonDiv">
         <button onClick={updateFinishedReading}>Finished Reading</button>
+        <button onClick={moreInfoHandler}>More Info</button>
       </div>
 
     </LargeBookDisplayTileWrapper>

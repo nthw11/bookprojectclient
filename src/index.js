@@ -13,13 +13,14 @@ import SearchClubDetailPage from './components/Pages/SearchClubDetailPage';
 import NewUser from './components/Pages/NewUser';
 import ClubPage from './components/Pages/ClubPage';
 import UserContext from './contexts/user-context';
+import SearchContext from './contexts/search-context';
+import SingleBookContext from './contexts/singleBook-context';
 import Login from './components/Pages/Login';
 import "./App.css";
 import "./fonts/Format_1452.woff";
 import "./fonts/Oxygen-Bold.ttf"
 import "./fonts/Oxygen-Light.ttf"
 import "./fonts/Oxygen-Regular.ttf"
-import SearchContext from './contexts/search-context';
 import EditUser from './components/Pages/EditUser';
 
 export const initialUserContext = {
@@ -43,12 +44,26 @@ export const initialSearchContext = {
   searchTerm: '', 
   startingPage:0
 }
+export const initialSingleBookContext = {
+  _id: '',
+  title: '',
+  subtitle: '',
+  authors: [],
+  pageCount: 0,
+  publishedDate: Date(),
+  imageLink: '',
+  description: '',
+  userRating: 0,
+  tags: [],
+  notes: []
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <SearchContext.Provider value={ initialSearchContext}>
   <UserContext.Provider value={ initialUserContext }>
+    <SingleBookContext.Provider value= { initialSingleBookContext } >
     <BrowserRouter>
       <Routes >
           <Route path='/' element={<Home />} />
@@ -63,6 +78,7 @@ root.render(
           <Route path='/clubs/:clubId' element={<ClubPage />} />
         </Routes>
       </BrowserRouter>
+      </SingleBookContext.Provider>
     </UserContext.Provider>
     </SearchContext.Provider>
   </React.StrictMode>

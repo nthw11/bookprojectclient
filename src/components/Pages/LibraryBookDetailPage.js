@@ -9,6 +9,8 @@ import axios from 'axios'
 import Header from '../Blocks/Header'
 import TagsInput from '../Blocks/TagsInput'
 import UserContext from '../../contexts/user-context'
+import SingleBookContext from '../../contexts/singleBook-context'
+import { initialSingleBookContext } from '../..'
 // Edit Book: put/:userId/:bookId :::
 // Data to send: userId/bookId (params)
 // newUserRating, newCategories, newImageLink, newTags, newNotes (body)
@@ -121,12 +123,16 @@ const LibraryBookDetailPage = ({state}) => {
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const userContext = useContext(UserContext)
+  let singleBookContext = useContext(SingleBookContext)
+  console.log(singleBookContext)
 
   const navigate = useNavigate()
   let location = useLocation()
   
-  const data = location.state?.book.book 
+  let data = singleBookContext
+  // const data = location.state?.book.book 
   console.log(userContext)
+  console.log(data)
   
   const [rating, setRating] = useState(data.userRating)
   const [newCurrentlyReading, setNewCurrentlyReading] = useState()
@@ -134,6 +140,10 @@ const LibraryBookDetailPage = ({state}) => {
   const [newUpNext, setNewUpNext] = useState()
 
 
+  const backToLibraryHandler = () => {
+    singleBookContext = initialSingleBookContext
+    navigate(-1)
+  }
   const ratingUpdateHandler = (e) =>{
     e.preventDefault()
     const strRating = e.target[1].value
@@ -320,7 +330,7 @@ const LibraryBookDetailPage = ({state}) => {
       </button>
       </div>
       <div className="backToLibrary">
-        <button onClick={() => navigate(-1)}>
+        <button onClick={backToLibraryHandler}>
           Back to My Library
         </button>
       </div>
