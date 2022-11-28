@@ -50,7 +50,7 @@ export const initialSingleBookContext = {
   subtitle: '',
   authors: [],
   pageCount: 0,
-  publishedDate: Date(),
+  publishedDate: '',
   imageLink: '',
   description: '',
   userRating: 0,

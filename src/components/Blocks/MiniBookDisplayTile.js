@@ -1,38 +1,36 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-
-const StyledMiniBookDisplayTile = styled.div`
-  background-color: #d5c3c3;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  padding: 5px;
-  width: 15vw;
-  
-  img{
-    max-height: 75px;
-  }
-  h4{
-    text-decoration: none;
-    
-  }
-  .link {
-  }
-`
+import { useNavigate } from 'react-router-dom'
+import { StyledMiniBookDisplayTile } from '../styles/booktilestyles'
+import SingleBookContext from '../../contexts/singleBook-context'
 
 const MiniBookDisplayTile = (book) => {
   const singleBook = book.book
-  console.log(singleBook)
+  // console.log(singleBook)
+  const navigate = useNavigate()
+  const singleBookContext = useContext(SingleBookContext)
+  const moreInfoHandler = () => {
+    singleBookContext._id = singleBook._id
+    singleBookContext.title = singleBook.title
+    singleBookContext.subtitle = singleBook.subtitle
+    singleBookContext.authors = singleBook.authors
+    singleBookContext.pageCount = singleBook.pageCount
+    singleBookContext.publishedDate = singleBook.publishedDate
+    singleBookContext.imageLink = singleBook.imageLink
+    singleBookContext.description = singleBook.description
+    singleBookContext.userRating = singleBook.userRating
+    singleBookContext.tags = singleBook.tags
+    singleBookContext.notes = singleBook.notes
+    navigate(`/user/book/${singleBook._id}`)
+  }
   if(singleBook){
     return(
-      <Link to={`/user/book/${singleBook._id}`} state={{book}} className='link'>
-      <StyledMiniBookDisplayTile>
+      
+      <StyledMiniBookDisplayTile key={singleBook._id} onClick={moreInfoHandler}>
         <h4>{singleBook.title}</h4>
         <img src={singleBook.imageLink} alt={singleBook.title} />
       </StyledMiniBookDisplayTile>
-      </Link>
+     
     )
   } else {
   return (
