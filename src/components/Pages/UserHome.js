@@ -163,6 +163,7 @@ const Home = () => {
       <div className='unsortedLibrary'>
         <h2 className='categoryHeader'>Library</h2>
         { userBooksArray && userBooksArray.map(book => {
+          console.log(book.tags)
           if(!book.tags.includes("Read")){
 
             return (

@@ -1,96 +1,24 @@
 import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { format } from 'date-fns'
 import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../contexts/user-context'
 import SearchContext from '../../contexts/search-context'
+import SingleBookContext from '../../contexts/singleBook-context'
+import { LargeBookDisplayTileWrapper } from '../styles/booktilestyles'
 
 const API = process.env.REACT_APP_BACKEND_API
-const LargeBookDisplayTileWrapper = styled.div`
-border-radius: 10px;
-border: none;
-background-color: #d5c3c3;
-padding: 10px;
-margin: 5px;
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-grid-template-rows: repeat(4 auto);
-height: auto;
-.currentlyReading{
-  grid-column: 2 / 4;
-  grid-row: 1;
-  align: center;
-  
-}
-.infoDiv{
-  /* border: 1px dashed red; */
-  grid-column: 1 / 3;
-  grid-row: 2;
-  display: inline-grid;
-  grid-template-columns: 1;
-  grid-template-rows: auto;
-}
-.title{
-  /* border: 1px dashed red; */
-  grid-column: 1;
-  grid-row: 1 / 2;
-}
-.authorDiv{
-  /* border: 1px dashed red; */
-  grid-column: 1;
-  grid-row: 2 / 3;
-}
-.coverImg{
-  /* border: 1px dashed red; */
-  grid-column: 4 / 5;
-  grid-row: 2;
-}
-.descriptionDiv{
-  /* border: 1px dashed red; */
-  grid-column: 3 / 5;
-  grid-row: 3;
-  /* width: 20vw; */
-  height: auto;
-}
-.bookDetailsSpan{
-  color: #222;
-}
-.bookStats{
-  /* border: 1px dashed red; */
-  grid-column: 3 / 4;
-  grid-row: 2;
-}
-.buttonDiv{
-  grid-column: 1 / 2;
-  grid-row: 3;
-}
-button{
-    width: 200px;
-    height: 75px;
-    display: block;
-    margin: 5px;
-    align-self: center;
-    background-color: #de4d86;
-    border-radius: 10px;
-    border: none;
-    color: #fff;
-    font-family: 'oxygen-Regular';
-    cursor: pointer;
-  }
-`
 
 const StyledNoBookDiv = styled.div``
 
-
-
-const LargeBookDisplayTile = ({book: book}) => {
+  const LargeBookDisplayTile = ({book: book}) => {
   const userContext = useContext(UserContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const searchContext = useContext(SearchContext)
   const navigate = useNavigate()
   const [newFinishedReading, setNewFinishedReading] = useState()
+  const singleBookContext = useContext(SingleBookContext)
 
   const updateFinishedReading = async () => {
     await axios({
@@ -105,7 +33,7 @@ const LargeBookDisplayTile = ({book: book}) => {
       if(response.status === 200){
         // return navigate('/user')
         setNewFinishedReading(response.data.finishedReading)
-        searchContext.finishedReading = newFinishedReading
+        userContext.finishedReading = newFinishedReading
       }
     })
     navigate('/user')
@@ -114,6 +42,20 @@ const LargeBookDisplayTile = ({book: book}) => {
     searchContext.searchTerm = ''
     searchContext.startingPage = 0
     
+  }
+  const moreInfoHandler = () => {
+    singleBookContext._id = book._id
+    singleBookContext.title = book.title
+    singleBookContext.subtitle = book.subtitle
+    singleBookContext.authors = book.authors
+    singleBookContext.pageCount = book.pageCount
+    singleBookContext.publishedDate = book.publishedDate
+    singleBookContext.imageLink = book.imageLink
+    singleBookContext.description = book.description
+    singleBookContext.userRating = book.userRating
+    singleBookContext.tags = book.tags
+    singleBookContext.notes = book.notes
+    navigate(`/user/book/${book._id}`)
   }
 
   if(book){
@@ -144,7 +86,8 @@ const LargeBookDisplayTile = ({book: book}) => {
       </p>
       </div>
       <div className="buttonDiv">
-        <button onClick={updateFinishedReading}>Finished Reading</button>
+        {/* <button onClick={updateFinishedReading}>Finished Reading</button> */}
+        <button onClick={moreInfoHandler}>More Info</button>
       </div>
 
     </LargeBookDisplayTileWrapper>
