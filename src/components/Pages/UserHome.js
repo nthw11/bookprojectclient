@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from 'react'
+import React, { useState, useEffect, useContext, useRef} from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -9,92 +9,20 @@ import UserContext from '../../contexts/user-context'
 import UserInfo from '../Blocks/UserInfo'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
 import MiniBookDisplayTile from '../Blocks/MiniBookDisplayTile'
+import { StyledLoading, UserHomePageWrapper } from '../styles/userHomeStyles'
 const API = process.env.REACT_APP_BACKEND_API
 
-const StyledLoading = styled.div`
-
-.fullPage{
-    background-color: #e6dbdb;
-    height: 100vh;
-    z-index: 1;
-  }
-  h3{
-    font-family: "format_1452";
-    font-size: 3em;
-    color: #00648d;
-    text-align: center;
-  }
-  .spinner{
-    position: absolute;
-    top: 40vh;
-    left: calc(50vw - 150px);
-    margin: auto;
-    img{
-      max-height: 250px;
-    }
-    @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(359deg);
-      }
-    }
-    animation: rotation 3s infinite linear;
-  }
-`
-
-const UserHomePageWrapper = styled.div`
-  background-color: #e6dbdb;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(3 auto);
-  font-family: 'format_1452';
-  color: #32292f;
-
-  .categoryHeader{
-    background-color: #d5c3c3;
-    max-height: 40px;
-    padding: 15px;
-    border-radius: 10px;
-  }
-  .upNextWrapper{
-    margin: 15px;
-    grid-column: 2 / 6;
-    grid-row: 1;
-  }
-  .currentlyReading{
-    grid-column: 7 / 12;
-    grid-row: 1;
-  }
-  .bookShelvesSection{
-    grid-column: 1 / 12;
-    grid-row: 2;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    }
-  .unsortedLibrary{
-    margin: 15px;
-    border-radius: 10px;
-    grid-column: 1 / 5;
-    grid-row: 3;
-  }
-  .finishedReading{
-    margin: 15px;
-    grid-column: 6 / 11;
-    grid-row: 3;
-  }
-`
 
 const Home = () => {
+  
   const userContext = useContext(UserContext)
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const [ isLoading, setLoading ] = useState(true)
-
+  const [ stateUpNext, setStateUpNext ] = useState([])
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
-  let userUpNextArray = []
+  // let userUpNextArray = []
   
   const fetchUserInfo = async () => {
     const url = `${API}/user/${userContext._id}`
@@ -105,9 +33,46 @@ const Home = () => {
     }
     await axios(config).then((incomingUserData) => {
       setUserData(incomingUserData)
+      setStateUpNext(incomingUserData.data.upNext)
       setLoading(false)
     })
-    
+  }
+  //Update Up Next List
+  const updateUpNext = async (upNext) => {
+    await axios({
+      method: "put",
+      headers: headers,
+      url: `${API}/user/${userContext._id}/upnext-update`,
+      data: {
+        reorderedUpNext : upNext
+      }
+    }).then(response => {
+      if(response.status === 200){
+        console.log(response)
+      }
+    })
+  }
+  //Drag & Drop
+  const dragItem = useRef()
+  const dragOverItem = useRef()
+
+  const dragStart = (e, position) => {
+    dragItem.current = position;
+    // console.log(e.target.innerHTML)
+  }
+  const dragEnter = (e, position) => {
+    dragOverItem.current = position;
+    // console.log(e.target.innerHTML)
+  }
+  const dragDrop = (e) => {
+    const reorderedUpNextArray = [...stateUpNext]
+    const dragItemContent = reorderedUpNextArray[dragItem.current]
+    reorderedUpNextArray.splice(dragItem.current, 1)
+    reorderedUpNextArray.splice(dragOverItem.current, 0, dragItemContent)
+    dragItem.current = null
+    dragOverItem.current = null
+    setStateUpNext(reorderedUpNextArray)
+    updateUpNext(reorderedUpNextArray)
   }
   
   useEffect(()=> {
@@ -132,9 +97,10 @@ const Home = () => {
     )
   } 
   userBooksArray = userData.data.allBooks
-  userUpNextArray = userData.data.upNext
+  // userUpNextArray = userData.data.upNext
+  // console.log(stateUpNext)
   // userFinishedArray = userData.data.finishedReading
-  console.log(userData.data)
+  // console.log(userData.data)
     
   return (
     <>
@@ -145,9 +111,18 @@ const Home = () => {
       <div className="upNextWrapper">
       
         <h2 className='categoryHeader'>Up Next</h2>
-        {userUpNextArray.length > 0 && userUpNextArray.map(book => {
+        {stateUpNext.length > 0 && stateUpNext.map((book, index) => {
           return(
-            <BookDisplayTile key={book._id} book={book} />
+            <div 
+            key={book._id} 
+            draggable
+            onDragStart={(e) => dragStart(e, index)}
+            onDragOver={(e) => e.preventDefault()}
+            onDragEnter={(e) => dragEnter(e, index)}
+            onDragEnd={dragDrop}
+            >
+            <BookDisplayTile index={index} book={book} />
+            </div>
           )
         })}
       </div>
@@ -162,8 +137,7 @@ const Home = () => {
       </div> */}
       <div className='unsortedLibrary'>
         <h2 className='categoryHeader'>Library</h2>
-        { userBooksArray && userBooksArray.map(book => {
-          console.log(book.tags)
+        { userBooksArray && userBooksArray.map((book) => {
           if(!book.tags.includes("Read")){
 
             return (

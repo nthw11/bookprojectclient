@@ -1,76 +1,24 @@
-import React, { useContext }  from 'react'
+import React, { useContext, useState }  from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../contexts/user-context'
-
+import { StyledLoginForm } from '../styles/LoginStyles'
+import { StyledLoading } from '../styles/userHomeStyles'
+import bookshelf_logo from '../../images/bookshelf_logo.png'
 const API = process.env.REACT_APP_BACKEND_API
 
-const StyledLoginForm = styled.div`
-  max-width: 40vw;
-  margin: 20px auto;
-  border: 1px solid black;
-  border-radius: 10px;
-  border: none;
-  padding: 20px;
-  background-color: #fadec6 ;
-  color: #32292f;
-
-  h1{
-  font-size: 3em;
-  font-family: "format_1452";
-}
-
-label{
-  font-family: "format_1452";
-  margin-left: 2vw;
-  
-}
-
-input{
-  background-color: #e7f4ff;
-  color: #00648d;
-  font-family: 'oxygen-Light';
-  display: block;
-  height: 35px;
-  margin: 10px auto;
-  padding-left: 15px;
-  width: 35vw;
-  border-radius: 10px;
-  border: none;
-}  
-
-button{
-  font-family: "oxygen-Regular";
-  margin: 25px 25px 0 25px;
-  background-color: #bb2200;
-  padding: 10px;
-  width: 15vw;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  
-}
-.or{
-  font-family: "oxygen-Bold";
-  font-style: italic;
-  margin-left: 150px;
-}
-.registerOption{
-  background-color: #00648d;
-}
-`
 
 const Login = () => {
+  const [ isLoading, setLoading ] = useState(false)
   const { register, handleSubmit, watch, formState: {errors} } = useForm()
   const navigate = useNavigate()
   const userContext = useContext(UserContext)
 
 const loginHandler = async (data) => {
+  setLoading(true)
   const {username, password} = data
   const config = {
     method: 'post',
@@ -115,6 +63,22 @@ const loginHandler = async (data) => {
     })
     return navigate("/user")
 }
+if(isLoading){
+  return(
+    <>
+      <Header />
+      <StyledLoading>
+      <div className="fullPage">
+        <h3>please wait</h3>
+        <div className="spinner">
+        <img src={bookshelf_logo} alt="loading" />
+        </div>
+        <h3>loading</h3>
+      </div>
+    </StyledLoading>
+    </>
+  )
+} 
 
   return (
     <div>
