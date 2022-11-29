@@ -8,7 +8,8 @@ const BookDisplayTile = (book) => {
   const navigate = useNavigate()
   
   const singleBook = book.book
-  
+  const index = (book.index ? book.index + 1 : 'no index')
+
   const singleBookContext = useContext(SingleBookContext)
   const moreInfoHandler = () => {
     singleBookContext._id = singleBook._id
@@ -36,6 +37,7 @@ const BookDisplayTile = (book) => {
       <button onClick={moreInfoHandler}>
           See More
       </button>
+      <h2>{(index != "no index" ? index : '')}</h2>
           {/* </Link> */}
     </StyledSingleBook>
   )
