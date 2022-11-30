@@ -21,7 +21,7 @@ const StyledSingleBook = styled.div`
     border-radius: 10px;
     border: none;
     color: #fff;
-    font-family: 'oxygen-Bold';
+    font-family: 'Exo2';
     cursor: pointer;
   }
   h2{

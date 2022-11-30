@@ -6,7 +6,7 @@ import Header from '../Blocks/Header'
 import TagsInput from '../Blocks/TagsInput'
 import UserContext from '../../contexts/user-context'
 import SingleBookContext from '../../contexts/singleBook-context'
-import { initialSingleBookContext } from '../..'
+import { initialSingleBookContext } from '../../contexts/initialSingleBook-context'
 
 const API = process.env.REACT_APP_BACKEND_API
 

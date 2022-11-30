@@ -9,6 +9,7 @@ import UserInfo from '../Blocks/UserInfo'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
 import MiniBookDisplayTile from '../Blocks/MiniBookDisplayTile'
 import { StyledLoading, UserHomePageWrapper } from '../styles/userHomeStyles'
+import ClubCard from '../Blocks/ClubCard'
 const API = process.env.REACT_APP_BACKEND_API
 
 
@@ -21,6 +22,7 @@ const Home = () => {
   const [ stateUpNext, setStateUpNext ] = useState([])
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
+  let userClubs = []
   
   const fetchUserInfo = async () => {
     const url = `${API}/user/${userContext._id}`
@@ -92,6 +94,8 @@ const Home = () => {
     )
   } 
   userBooksArray = userData.data.allBooks
+  userClubs = userData.data.clubs
+  userContext.clubs = userClubs
 
   return (
     <>
@@ -126,6 +130,14 @@ const Home = () => {
         <BookshelvesBar user={userData.data}/>
       
       </div> */}
+      <div className="clubsRow">
+        <h2 className="categoryHeader">Clubs</h2>
+        {userClubs && userClubs.map((club) => {
+          return (
+            <ClubCard key={club._id} club={club} />
+          )
+        }) }
+      </div>
       <div className='unsortedLibrary'>
         <h2 className='categoryHeader'>Library</h2>
         { userBooksArray && userBooksArray.map((book) => {

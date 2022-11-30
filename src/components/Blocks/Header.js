@@ -1,8 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import UserContext from '../../contexts/user-context'
-import { initialSearchContext, initialUserContext } from '../..'
+import {UserContext} from '../../contexts/user-context'
 import logo from '../../images/bookshelf_logo.png'
 import SearchContext from '../../contexts/search-context'
 import { StyledHeader } from '../styles/headerStyles'
@@ -18,8 +17,11 @@ const logoutHandler = () => {
 const searchClickHandler = () => {
   searchContext.searchTerm = ''
   searchContext.startingPage = 0
-  
 }
+const clubsHandler = () => {
+  console.log('club me')
+}
+  
 
   return (
     <StyledHeader>
@@ -54,6 +56,9 @@ const searchClickHandler = () => {
             </li>
           </Link>
           {/* onClick={searchClickHandler} */}
+          <Link to={"/clubs"} onClick={clubsHandler} >
+          <li>Clubs</li>
+          </Link>
           <Link to={"/search"} onClick={searchClickHandler} >
           <li>Search Books</li>
           </Link>
