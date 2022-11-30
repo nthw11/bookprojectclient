@@ -10,6 +10,7 @@ const StyledLoginForm = styled.div`
   padding: 20px;
   background-color: #fadec6 ;
   color: #32292f;
+  font-family: 'Exo2';
 
   h1{
   font-size: 3em;
@@ -17,15 +18,16 @@ const StyledLoginForm = styled.div`
 }
 
 label{
-  font-family: "format_1452";
+  font-family: 'Exo2';
+
   margin-left: 2vw;
   
 }
 
 input{
+  font-family: 'Exo2';
   background-color: #e7f4ff;
   color: #00648d;
-  font-family: 'oxygen-Light';
   display: block;
   height: 35px;
   margin: 10px auto;
@@ -36,8 +38,8 @@ input{
 }  
 
 button{
-  font-family: "oxygen-Regular";
-  margin: 25px 25px 0 25px;
+  font-family: "Exo2";
+  margin: 25px auto 0 auto;
   background-color: #bb2200;
   padding: 10px;
   width: 15vw;
@@ -49,12 +51,49 @@ button{
   
 }
 .or{
-  font-family: "oxygen-Bold";
+  font-family: "Exo2";
   font-style: italic;
-  margin-left: 150px;
+  margin-left: 5vw;
 }
 .registerOption{
   background-color: #00648d;
 }
+.loginOption {
+  background-color: #00648d;
+  
+}
+@media (max-width: 700px){
+    button{
+      width: 30vw;
+      margin: auto;
+    }
+  }
 `
-export {StyledLoginForm}
+const StyledHome = styled.div`
+  font-family: "Exo2";
+  color: #00648d;
+  
+  h1{
+    font-family: "format_1452";
+    font-size: 4em;
+  }
+  img{
+    max-width: 350px;
+  }
+
+  .centerDiv{
+    width: 50vw;
+    margin: 5vh auto;
+    text-align: center;
+  }
+  a{
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:link, a:visited{
+    color: #00648d;
+  }
+
+  }
+`
+export {StyledLoginForm, StyledHome}

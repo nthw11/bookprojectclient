@@ -4,66 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 import UserContext from '../../contexts/user-context'
+import { StyledBookDetail } from '../styles/bookDetailPageStyles'
 
 const API = process.env.REACT_APP_BACKEND_API
-const StyledBookDetail = styled.div`
-  width: 80vw;
-  margin-left: 10vw;
-  border-radius: 10px;
-  background: #fbeef1;
-  margin-top:  10px;
-  border: none;
-  padding: 15px;
-  color: #32292f;
-  font-family: "oxygen-Regular";
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: (25px 25px auto auto);
-
-  .imgDiv {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  
-  }
-  .authorTitleDiv{
-    display: inline-grid;
-  }
-  .titleDiv {
-  
-    grid-column: 2 / 3;
-    grid-row: 1;
-  }
-  .authorDiv {
-    grid-column: 2 / 3;
-    grid-row: 2;
-  }
-  .descriptionDiv {
-    grid-column: 1 / 3;
-    grid-row: 3;
-  }
-
-
-  button{
-    width: 200px;
-    height: 75px;
-    display: block;
-    margin: 5px;
-    align-self: center;
-    background-color: #de4d86;
-    border-radius: 10px;
-    border: none;
-    color: #fff;
-    font-family: 'oxygen-Regular';
-    cursor: pointer;
-  }
-  .backToLibrary{
-    button{
-
-      background: #00648d;
-      font-size: 1.5em;
-    }
-  }
-`
-
 
 const SearchBookDetailPage = (state) => {
   const userContext = useContext(UserContext)

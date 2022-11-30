@@ -1,12 +1,7 @@
 import React, {useState, useContext} from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import { faCircle, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
-// import { faCircle as faRegCircle } from '@fortawesome/free-regular-svg-icons'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { StyledBookDetail } from '../styles/bookDetailPageStyles'
-
 import Header from '../Blocks/Header'
 import TagsInput from '../Blocks/TagsInput'
 import UserContext from '../../contexts/user-context'
@@ -20,13 +15,8 @@ const LibraryBookDetailPage = ({state}) => {
   const headers = { 'token' : token }
   const userContext = useContext(UserContext)
   let singleBookContext = useContext(SingleBookContext)
-  console.log(singleBookContext)
-
   const navigate = useNavigate()
-  let location = useLocation()
-  
   let data = singleBookContext
-  // const data = location.state?.book.book 
   console.log(userContext)
   console.log(data)
   
@@ -34,7 +24,6 @@ const LibraryBookDetailPage = ({state}) => {
   const [newCurrentlyReading, setNewCurrentlyReading] = useState()
   const [newFinishedReading, setNewFinishedReading] = useState()
   const [newUpNext, setNewUpNext] = useState()
-
 
   const backToLibraryHandler = () => {
     navigate(-1)
@@ -153,7 +142,7 @@ const LibraryBookDetailPage = ({state}) => {
       <div>
       <Header />
       <StyledBookDetail>
-
+      <div className="imgDataDiv">
       <div className="imgDiv">
       <img src={data.imageLink} alt={data.title} />
       </div>
@@ -164,10 +153,11 @@ const LibraryBookDetailPage = ({state}) => {
       <div className="authorDiv">
       <h3>{data.authors[0]}</h3>
       </div>
-      </div>
       <div className="infoDiv">
         <h3>Pages: <span className='bookInfoDetails'>{data.pageCount}</span></h3>
         <h3>Publish Date: <span className='bookInfoDetails'>{data.publishedDate.slice(0, -14)}</span></h3>
+      </div>
+      </div>
       </div>
       <div className="descriptionDiv">
       <p>{data.description}</p>
@@ -189,8 +179,7 @@ const LibraryBookDetailPage = ({state}) => {
         </label>
           </form>
         </div>
-        {/* <FontAwesomeIcon icon={faCircle} /> */}
-        {/* <FontAwesomeIcon icon={faCircleHalfStroke} /> */}
+
       </div>
       <div className="tagsDiv">
         <TagsInput tags={data.tags} user={userContext._id} bookId={data._id}/>
@@ -215,11 +204,8 @@ const LibraryBookDetailPage = ({state}) => {
         <button className='read' onClick={updateFinishedReading}>
         Mark <span className='title'>{data.title}</span> as read
       </button>
-      
       }
       
-    
-
       <button onClick={removeFromLibHandler} >
         Remove From My Library
       </button>

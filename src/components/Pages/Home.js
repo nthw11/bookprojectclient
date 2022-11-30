@@ -4,31 +4,7 @@ import Header from '../Blocks/Header'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import logo from '../../images/bookshelf_logo.png'
-const StyledHome = styled.div`
-  font-family: "format_1452";
-  color: #00648d;
-
-  h1{
-    font-size: 4em;
-  }
-  img{
-    max-width: 350px;
-  }
-
-  .centerDiv{
-    width: 50vw;
-    margin: 5vh auto;
-    text-align: center;
-  }
-  a{
-    text-decoration: none;
-    cursor: pointer;
-  }
-  a:link, a:visited{
-    color: #00648d;
-  }
-  
-`
+import { StyledHome } from '../styles/LoginStyles'
 
 const Home = () => {
   let userContext = useContext(UserContext)

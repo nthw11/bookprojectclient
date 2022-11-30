@@ -6,9 +6,9 @@ const StyledLoading = styled.div`
     background-color: #e6dbdb;
     height: 100vh;
     z-index: 1;
+    font-family: "Exo2";
   }
   h3{
-    font-family: "format_1452";
     font-size: 3em;
     color: #00648d;
     text-align: center;
@@ -38,7 +38,7 @@ const UserHomePageWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(3 auto);
-  font-family: 'format_1452';
+  font-family: 'Exo2';
   color: #32292f;
 
   .categoryHeader{
@@ -73,6 +73,58 @@ const UserHomePageWrapper = styled.div`
     grid-column: 6 / 11;
     grid-row: 3;
   }
+  @media (max-width: 700px){
+    display: flex;
+    flex-direction: column;
+    .currentlyReading{
+      order: 1;
+    }
+    .upNextWrapper{
+      order:2;
+    }
+    .unsortedLibrary{
+      order: 3;
+    }
+    .finishedReading{
+      order: 4;
+    }
+  }
+`
+const StyledUserInfo = styled.div`
+max-width: 80vw;
+display: grid;
+grid-template-columns: 4(1fr 1fr 2fr 1fr);
+grid-template-rows: 2;
+background-color: #ebf9ff;
+border-radius: 10px;
+border: none;
+height: auto;
+padding: 15px 10vw;
+margin: 15px;
+color: #32292f;
+font-family: 'Exo2';
+
+.userName{
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.userImg{
+  grid-column: 3 / 4;
+  grid-row: 1;
+}
+img{
+  grid-row: 1;
+  max-width: 150px;
+}
+.settings{
+  grid-row: 1;
+  grid-column: 4 / 5;
+  color: blue;
+  font-size: 2em;
+  cursor: pointer;
+
+}
+
 `
 
-export {UserHomePageWrapper, StyledLoading}
+export {UserHomePageWrapper, StyledLoading, StyledUserInfo}
