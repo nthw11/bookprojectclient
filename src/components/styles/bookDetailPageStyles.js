@@ -10,9 +10,11 @@ const StyledBookDetail = styled.div`
   padding: 15px;
   display: grid;
   color: #32292f;
-  font-family: "oxygen-Regular";
+  font-family: "Solway-Regular";
+  line-height: 1.5em;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: (25px 25px auto auto);
+  /* gap: 15px; */
   h3{
     font-size: .85em;
   }
@@ -33,9 +35,14 @@ const StyledBookDetail = styled.div`
     grid-column: 2 / 3;
     grid-row: 2;
   }
-  .descriptionDiv {
-    grid-column: 1 / 3;
+  .infoDiv{
+    grid-column: 2 / 3;
     grid-row: 3;
+  }
+  .descriptionDiv {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    padding: 15px;
   }
   .ratingDiv{
     grid-column: 4 / 5;
@@ -104,6 +111,76 @@ const StyledBookDetail = styled.div`
   .updateRatingBtn{
     /* font-size: 1.5em; */
     width: 100px;
+  }
+  @media(max-width: 1200px){
+    font-size: .8em;
+    img{ 
+      max-width: 125px;}
+    button{
+      width: 150px;
+      height: 50px;
+      font-size: .9em;
+    }
+  }
+  @media(max-width: 1000px){
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: (20px 20px auto auto auto); */
+    font-size: .65em;
+    .buttonDiv {
+    grid-column: 1 / 6;
+    grid-row: 3;
+    display: inline-flex;
+    justify-content: center;
+  }
+    .descriptionDiv{
+      /* width: auto; */
+      grid-column: 1 / 6;
+      margin-right: 15px;
+      grid-row: 5;
+    }
+    img{
+      max-width: 75px;
+     }
+    button{
+      width: 100px;
+      font-size: .7em;
+    }
+  }
+  @media(max-width: 700px){
+    display: flex;
+    flex-direction: column;
+    .imgDataDiv{
+      order: 0;
+      display: inline-flex;
+      justify-content: space-around;
+    }
+    .backToLibrary{
+      order: 1;
+      margin: 5px auto;
+    }
+    .ratingDiv{
+      order: 2;
+      display: inline-flex;
+      justify-content: space-around;
+    }
+    .tagsDiv{
+      order: 3;
+      display: inline-flex;
+      justify-content: space-around;
+      margin: 5px auto;
+    }
+
+    .buttonDiv{
+      order: 3;
+      flex-wrap: wrap;
+      margin: 15px;
+    }
+    .descriptionDiv{
+      order: 4;
+      font-size: 1.1em;
+      line-height: 1.4em;
+    }
+
   }
 `
 

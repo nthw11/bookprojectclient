@@ -2,14 +2,12 @@ import React, { useContext, useState }  from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../contexts/user-context'
 import { StyledLoginForm } from '../styles/LoginStyles'
 import { StyledLoading } from '../styles/userHomeStyles'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
 const API = process.env.REACT_APP_BACKEND_API
-
 
 const Login = () => {
   const [ isLoading, setLoading ] = useState(false)

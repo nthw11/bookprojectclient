@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useRef} from 'react'
 import Header from '../Blocks/Header'
 import axios from 'axios'
-import styled from 'styled-components'
 import BookDisplayTile from '../Blocks/BookDisplayTile'
 import LargeBookDisplayTile from '../Blocks/LargeBookDisplayTile'
 import BookshelvesBar from '../Blocks/BookshelvesBar'
@@ -22,7 +21,6 @@ const Home = () => {
   const [ stateUpNext, setStateUpNext ] = useState([])
   const [ userData, setUserData ] = useState('')
   let userBooksArray = []
-  // let userUpNextArray = []
   
   const fetchUserInfo = async () => {
     const url = `${API}/user/${userContext._id}`
@@ -58,11 +56,9 @@ const Home = () => {
 
   const dragStart = (e, position) => {
     dragItem.current = position;
-    // console.log(e.target.innerHTML)
   }
   const dragEnter = (e, position) => {
     dragOverItem.current = position;
-    // console.log(e.target.innerHTML)
   }
   const dragDrop = (e) => {
     const reorderedUpNextArray = [...stateUpNext]
@@ -76,7 +72,6 @@ const Home = () => {
   }
   
   useEffect(()=> {
-    // fetchUserBooks()
     fetchUserInfo()
   },[])
   
@@ -97,11 +92,7 @@ const Home = () => {
     )
   } 
   userBooksArray = userData.data.allBooks
-  // userUpNextArray = userData.data.upNext
-  // console.log(stateUpNext)
-  // userFinishedArray = userData.data.finishedReading
-  // console.log(userData.data)
-    
+
   return (
     <>
       <Header />

@@ -21,6 +21,13 @@ import "./fonts/Format_1452.woff";
 import "./fonts/Oxygen-Bold.ttf"
 import "./fonts/Oxygen-Light.ttf"
 import "./fonts/Oxygen-Regular.ttf"
+import "./fonts/Exo2-Italic-VariableFont_wght.ttf"
+import "./fonts/Exo2-VariableFont_wght.ttf"
+import "./fonts/Solway-Bold.ttf"
+import "./fonts/Solway-ExtraBold.ttf"
+import "./fonts/Solway-Light.ttf"
+import "./fonts/Solway-Medium.ttf"
+import "./fonts/Solway-Regular.ttf"
 import EditUser from './components/Pages/EditUser';
 
 export const initialUserContext = {

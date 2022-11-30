@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react'
-import { Link, history, useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
+import React, {useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import SingleBookContext from '../../contexts/singleBook-context'
 import { StyledSingleBook } from '../styles/booktilestyles'
 
@@ -33,18 +32,15 @@ const BookDisplayTile = (book) => {
       <img src={singleBook.imageLink || 'https://as1.ftcdn.net/v2/jpg/01/95/35/78/1000_F_195357805_his1UjQcJqJiJohgiYnK5cwdVu8G5Ldd.jpg'} alt={singleBook.title} />
       <h3>{singleBook.title}</h3>
       <h4>{singleBook.authors[0] || 'author'}</h4>
-        {/* <Link to={`/user/book/${singleBook._id}`} state={{book}} > */}
       <button onClick={moreInfoHandler}>
           See More
       </button>
       <h2>{(index != "no index" ? index : '')}</h2>
-          {/* </Link> */}
     </StyledSingleBook>
   )
 } else {
   return (
     <div>
-
     <h2>no books to display</h2>
     <h3>try again?</h3>
     </div>

@@ -15,3 +15,36 @@
   src: local('Oxygen-Regular'),
     url('./fonts/Oxygen-Regular.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Exo2-Italic';
+  src: local('Exo2-Italic'),
+    url('./fonts/Exo2-Italic-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Exo2';
+  src: local('Exo2'),
+    url('./fonts/Exo2-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Solway-Bold';
+  src: local('Solway-Bold'), url('./fonts/Solway-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Solway-ExtraBold';
+  src: local('Solway-ExtraBold'),
+    url('./fonts/Solway-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Solway-Light';
+  src: local('Solway-Light'), url('./fonts/Solway-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Solway-Medium';
+  src: local('Solway-Medium'),
+    url('./fonts/Solway-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Solway-Regular';
+  src: local('Solway-Regular'),
+    url('./fonts/Solway-Regular.ttf') format('truetype');
+}

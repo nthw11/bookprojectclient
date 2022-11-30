@@ -5,48 +5,8 @@ import UserContext from '../../contexts/user-context'
 import { initialSearchContext, initialUserContext } from '../..'
 import logo from '../../images/bookshelf_logo.png'
 import SearchContext from '../../contexts/search-context'
+import { StyledHeader } from '../styles/headerStyles'
 
-const StyledHeader = styled.div`
-
-font-family: "format_1452";
-max-width: 100vw;
-display: flex;
-justify-content: space-between;
-margin: auto;
-/* background-color: #f0bcc5; */
-background-color: #d6f3ff;
-z-index: 10;
-
-h1{
-  color: #00648d;
-  font-size: 2.5em;
-}
-
-img{
-  margin: 25px;
-  height: 75px;
-}
-nav{
-  
-}
-
-ul{
-  margin-right: 35px;
-}
-
-li{
-  list-style: none;
-  color: #32292f;
-  text-decoration: none;
-  padding-top: 20px;
-}
-a{
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1em;
-  text-align: right;
-}
-`
 const Header = () => {
   const searchContext = useContext(SearchContext)
   const navigate = useNavigate()
@@ -61,7 +21,6 @@ const searchClickHandler = () => {
   
 }
 
-// console.log(userContext)
   return (
     <StyledHeader>
       <Link to={"/"}>
@@ -80,11 +39,11 @@ const searchClickHandler = () => {
         <ul>
           {localStorage.getItem("token") === null ?
           <div>
-          <Link to={"/user/new-user"}>
-            <li>New User</li>
-          </Link>
           <Link to={"/user/login"}>
           <li>Log In</li>
+          </Link>
+          <Link to={"/user/new-user"}>
+            <li>New User</li>
           </Link>
           </div>
           :
