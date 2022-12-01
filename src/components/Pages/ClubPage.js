@@ -2,9 +2,11 @@ import React, {useContext, useState, useEffect} from 'react'
 import UserContext from '../../contexts/user-context'
 import ClubContext from '../../contexts/club-context'
 import ClubCard from '../Blocks/ClubCard'
+import BoardTile from '../Blocks/BoardTile'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../Blocks/Header'
+import { StyledClubPage } from '../styles/clubPage-styles'
 import { StyledLoading } from '../styles/userHomeStyles'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
 const API = process.env.REACT_APP_BACKEND_API
@@ -13,6 +15,7 @@ const ClubPage = () => {
   const clubContext = useContext(ClubContext)
   const userContext = useContext(UserContext)
   const [ club, setClub ] = useState({})
+  const [ boards, setBoards ] = useState([{}])
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const [ isLoading, setLoading ] = useState(true)
@@ -25,15 +28,15 @@ const ClubPage = () => {
       url
     }
     await axios(config).then((incomingClubData) => {
-      setClub(incomingClubData)
+      setClub(incomingClubData.data[0])
       console.log(club)
+      setBoards(incomingClubData.data[0].clubBoards)
       setLoading(false)
     })
   }
   let userClubs = []
   userClubs = userContext.clubs
-  console.log(userClubs)
-
+  
   useEffect(()=> {
     fetchClubInfo()
   }, [])
@@ -55,26 +58,32 @@ const ClubPage = () => {
     )
   } 
   return (
-    <div>
+    <StyledClubPage>
       <Header />
-      <div className="allClubs">
+      {/* <div className="allClubs">
         <h2>All My Clubs</h2>
+        <div className="clubsList">
+
         {userClubs && userClubs.map((club) => {
-          console.log(club)
           return (
             <ClubCard key={club._id} club={club} />
-          )
-        }) }
-      </div>
+            )
+          }) }
+          </div>
+      </div> */}
       <div className="currentClub">
 
       <h1>{clubContext.clubName}</h1>
       <div className="boards">
         <h2>boards</h2>
-        
+        {boards && boards.map(board =>{
+          console.log(board)
+          return (
+          <BoardTile board={board}/>
+        )})}
       </div>
       </div>
-    </div>
+    </StyledClubPage>
   )
 }
 

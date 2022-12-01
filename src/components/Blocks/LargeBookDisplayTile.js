@@ -6,6 +6,7 @@ import UserContext from '../../contexts/user-context'
 import SearchContext from '../../contexts/search-context'
 import SingleBookContext from '../../contexts/singleBook-context'
 import { LargeBookDisplayTileWrapper } from '../styles/booktilestyles'
+import dateConverter from '../../util/dateConverter'
 
 const API = process.env.REACT_APP_BACKEND_API
 
@@ -72,7 +73,7 @@ const StyledNoBookDiv = styled.div``
           }
           ) } </div>
           <h4>Pages- <span className='bookDetailsSpan'>{book.pageCount}</span></h4>
-        <h4>Published Date- <span className="bookDetailsSpan">{book.publishedDate.slice(0, -14)}</span> </h4>
+        <h4>Published Date- <span className="bookDetailsSpan">{dateConverter(book.publishedDate)}</span> </h4>
       </div>
       <div className="coverImg">
         <img src={book.imageLink} alt={book.title} />
