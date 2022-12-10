@@ -6,6 +6,7 @@ import BoardTile from '../Blocks/BoardTile'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../Blocks/Header'
+import ClubMemberTile from '../Blocks/ClubMemberTile'
 import { StyledClubPage } from '../styles/clubPage-styles'
 import { StyledLoading } from '../styles/userHomeStyles'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
@@ -16,10 +17,12 @@ const ClubPage = () => {
   const userContext = useContext(UserContext)
   const [ club, setClub ] = useState({})
   const [ boards, setBoards ] = useState([{}])
+  const [ clubMembers, setClubMembers ] = useState([])
   const token = localStorage.getItem("token")
   const headers = { 'token' : token }
   const [ isLoading, setLoading ] = useState(true)
-  // console.log(userContext)
+  console.log(clubContext.clubMembers)
+
   const fetchClubInfo = async ()=> {
     const url = `${API}/club/id/${clubContext._id}`
     const config = {
@@ -29,8 +32,9 @@ const ClubPage = () => {
     }
     await axios(config).then((incomingClubData) => {
       setClub(incomingClubData.data[0])
-      console.log(club)
+      console.log(incomingClubData)
       setBoards(incomingClubData.data[0].clubBoards)
+      setClubMembers(incomingClubData.data[0].clubMembers)
       setLoading(false)
     })
   }
@@ -40,6 +44,25 @@ const ClubPage = () => {
   useEffect(()=> {
     fetchClubInfo()
   }, [])
+
+  const joinClubHandler = async () =>{
+    const url = `${API}/user/${userContext._id}/club`
+    const config = {
+      headers: headers,
+      method: "put",
+      url,
+      data: {
+        newMember: userContext.username,
+        clubId: clubContext._id
+      }
+    }
+    await axios(config).then((incomingClubData) => {
+      console.log(incomingClubData)
+      if (incomingClubData.status === 200){
+        setClubMembers([... userContext.username])
+      }
+    })
+  }
 
   if(isLoading){
     return(
@@ -74,14 +97,36 @@ const ClubPage = () => {
       <div className="currentClub">
 
       <h1>{clubContext.clubName}</h1>
+      <div className="clubMembers">
+        <h2>Members</h2>
+        {
+          clubMembers && clubMembers.map(member =>{
+            return( 
+            <p className='clubMember' >{member}</p>
+            )
+          })
+        }
+        {
+          clubMembers.includes(userContext.username) ? <h3></h3> : <button className='joinButton' onClick={joinClubHandler}>Join Club</button>
+        }
+          
+      </div>
       <div className="boards">
         <h2>boards</h2>
-        {boards && boards.map(board =>{
+        {
+         clubMembers.includes(userContext.username) ?  
+          boards && boards.map(board =>{
           console.log(board)
           return (
-          <BoardTile board={board}/>
-        )})}
+            <BoardTile board={board}/>
+            )})
+            : 
+            <div>
+              <h4>Please join this club to view the boards</h4>
+            </div>
+          }
       </div>
+            
       </div>
     </StyledClubPage>
   )

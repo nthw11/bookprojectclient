@@ -31,10 +31,10 @@ const BoardTile = (board) => {
     }
     await axios(config).then((message) => {
       messages.push(message.data)
-      
     })
     reset()
   }
+  const revMessages = messages.slice().reverse()
 
   console.log(userContext)
   return (
@@ -43,7 +43,7 @@ const BoardTile = (board) => {
       <h3>{board.board.boardName}</h3>
       <div className="messages">
         <div className="messagesContainer">
-        {messages && messages.map(message =>{
+        {revMessages && revMessages.map(message =>{
         const time = dateConverter(message.createdAt)
         console.log(message.createdAt)
         console.log(time)
