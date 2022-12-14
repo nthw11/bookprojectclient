@@ -7,40 +7,33 @@ import UserContext from '../../contexts/user-context'
 import { StyledLoginForm } from '../styles/LoginStyles'
 import { StyledLoading } from '../styles/userHomeStyles'
 import bookshelf_logo from '../../images/bookshelf_logo.png'
+import ErrorBlock from '../Blocks/ErrorBlock'
+import { set } from 'lodash'
 const API = process.env.REACT_APP_BACKEND_API
 
 const Login = () => {
   const [ isLoading, setLoading ] = useState(false)
+  const [ errorTxt, setErrorTxt ] = useState("")
   const { register, handleSubmit, watch, formState: {errors} } = useForm()
   const navigate = useNavigate()
   const userContext = useContext(UserContext)
+  
 
 const loginHandler = async (data) => {
   setLoading(true)
-  const {username, password} = data
-  const config = {
-    method: 'post',
-    data: {
-      username, 
-      password
-    }, 
-    url: `${API}/login`
-  }
-  await axios(config)
-  .catch(function (error) {
-    if(error.response){
-      console.log(error.response)
-      const errorMsg = error.response.data
-      alert(errorMsg)
-    } else if (error.request) {
-      console.log(error.request)
-    } else {
-      console.log(error.message)
+  try{
+
+    const {username, password} = data
+    const config = {
+      method: 'post',
+      data: {
+        username, 
+        password
+      }, 
+      url: `${API}/login`
     }
-  })
-  .then((userData) => {
-     
-    console.log(userData)
+    await axios(config)
+    .then((userData) => {
       userContext._id = userData.data.user._id
       userContext.username = userData.data.user.username
       userContext.firstname = userData.data.user.firstname
@@ -60,6 +53,21 @@ const loginHandler = async (data) => {
       localStorage.setItem("token", userData.data.token)
     })
     return navigate("/user")
+  }
+  catch(error) {
+    if(error.response){
+      const errorMsg = error.response.data
+      console.log(error)
+      setErrorTxt(errorMsg)
+      setLoading(false)
+
+    } 
+    // else if (error.request) {
+    //   console.log(error.request)
+    // } else {
+    //   console.log(error.message)
+    // }
+  }
 }
 if(isLoading){
   return(
@@ -96,6 +104,12 @@ if(isLoading){
       <button className='registerOption'>Register</button>
       </Link>
     </StyledLoginForm>
+    {
+      errorTxt && (
+      // <p className='errorMsg'>{errorTxt}</p>
+      <ErrorBlock error={errorTxt} />
+      )
+    }
     </div>
   )
 }

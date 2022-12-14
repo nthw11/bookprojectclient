@@ -66,13 +66,19 @@ color: #32292f;
   margin: 15px;
   font-size: 1.5em;
 }
-.clubMember{
+
+.clubMemberDiv{
+  display: flex ;
   border-radius: 10px;
   border: none;
-  padding: 5px;
+  padding: 7px;
   box-shadow: 1px 2px #32292f;
   max-width: 300px;
-
+  height: 60px;
+  justify-content: space-between;
+}
+.exitIcon{
+  cursor: pointer;
 }
 .joinButton{
   width: 100px;

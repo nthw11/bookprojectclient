@@ -6,6 +6,7 @@ import BoardTile from '../Blocks/BoardTile'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../Blocks/Header'
+import { GiExitDoor } from 'react-icons/gi'
 import ClubMemberTile from '../Blocks/ClubMemberTile'
 import { StyledClubPage } from '../styles/clubPage-styles'
 import { StyledLoading } from '../styles/userHomeStyles'
@@ -64,6 +65,25 @@ const ClubPage = () => {
     })
   }
 
+  const leaveClubHandler = async () =>{
+    const url = `${API}/user/${userContext._id}/leaveclub`
+    const config = {
+      headers: headers,
+      method: "put",
+      url,
+      data: {
+        clubId: clubContext._id
+      }
+    }
+    await axios(config).then((incomingUserData) => {
+      // console.log(incomingUserData)
+      if (incomingUserData.status === 200){
+        // setClubMembers([... userContext.username])
+        console.log(incomingUserData)
+      }
+    })
+  }
+
   if(isLoading){
     return(
       <>
@@ -102,7 +122,15 @@ const ClubPage = () => {
         {
           clubMembers && clubMembers.map(member =>{
             return( 
+              <div className='clubMemberDiv'>
             <p className='clubMember' >{member}</p>
+            <p className='exitIcon'>{
+              member === userContext.username ? 
+              < GiExitDoor onClick={leaveClubHandler}/>
+              :
+              <div></div>
+              }</p>
+            </div>
             )
           })
         }
