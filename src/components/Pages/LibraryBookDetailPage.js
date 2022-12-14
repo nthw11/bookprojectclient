@@ -6,7 +6,8 @@ import Header from '../Blocks/Header'
 import TagsInput from '../Blocks/TagsInput'
 import UserContext from '../../contexts/user-context'
 import SingleBookContext from '../../contexts/singleBook-context'
-import { initialSingleBookContext } from '../..'
+import { initialSingleBookContext } from '../../contexts/initialSingleBook-context'
+import dateConverter from '../../util/dateConverter'
 
 const API = process.env.REACT_APP_BACKEND_API
 
@@ -155,7 +156,7 @@ const LibraryBookDetailPage = ({state}) => {
       </div>
       <div className="infoDiv">
         <h3>Pages: <span className='bookInfoDetails'>{data.pageCount}</span></h3>
-        <h3>Publish Date: <span className='bookInfoDetails'>{data.publishedDate.slice(0, -14)}</span></h3>
+        <h3>Publish Date: <span className='bookInfoDetails'>{dateConverter(data.publishedDate)}</span></h3>
       </div>
       </div>
       </div>

@@ -37,7 +37,7 @@ const UserHomePageWrapper = styled.div`
   background-color: #e6dbdb;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(3 auto);
+  grid-template-rows: repeat(auto);
   font-family: 'Exo2';
   color: #32292f;
 
@@ -62,16 +62,21 @@ const UserHomePageWrapper = styled.div`
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     }
+  .clubsRow{
+    grid-column: 1 / 5;
+    grid-row: 3;
+    margin: 15px;
+  }
   .unsortedLibrary{
     margin: 15px;
     border-radius: 10px;
     grid-column: 1 / 5;
-    grid-row: 3;
+    grid-row: 4;
   }
   .finishedReading{
     margin: 15px;
     grid-column: 6 / 11;
-    grid-row: 3;
+    grid-row: 4;
   }
   @media (max-width: 700px){
     display: flex;

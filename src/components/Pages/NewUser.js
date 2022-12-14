@@ -5,16 +5,21 @@ import {useForm} from 'react-hook-form'
 import Header from '../Blocks/Header'
 import UserContext from '../../contexts/user-context'
 import { StyledLoginForm } from '../styles/LoginStyles'
+import ErrorBlock from '../Blocks/ErrorBlock'
+import bookshelf_logo from '../../images/bookshelf_logo.png'
 
 const API = process.env.REACT_APP_BACKEND_API
 
 const NewUser = () => {
   const userContext = useContext(UserContext)
+  const [ isLoading, setLoading ] = useState(false)
   const navigate = useNavigate()
-  
+  const [ errorTxt, setErrorTxt ] = useState("")
   const { register, handleSubmit, watch, formState: {errors} } = useForm()
 
   const onSubmit = async (data) => {
+    setLoading(true)
+    try{
     const {username, firstname, lastname, email, phone, password} = data
     const config = {
       method: 'post',
@@ -42,11 +47,23 @@ const NewUser = () => {
     })
     return navigate("/user")
   }
-
+  catch(error){
+    console.log(error)
+    if(error.response){
+      const errorMsg = error.response.data
+      console.log(errorMsg)
+      setErrorTxt(errorMsg)
+      setLoading(false)
+    }
+  }
+  }
   return (
     <div>
       <Header />
-      
+      { errorTxt && (
+      <ErrorBlock error={errorTxt} />
+      )
+      }
       <StyledLoginForm>
         <h1>Register</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,6 +93,7 @@ const NewUser = () => {
         <button className='loginOption'>Log In</button>
       </Link>
       </StyledLoginForm>
+
     </div>
   )
 }
